@@ -1,0 +1,9 @@
+diff a/Resources/Prototypes/Entities/Mobs/NPCs/revenant.yml b/Resources/Prototypes/Entities/Mobs/NPCs/revenant.yml	(rejected hunks)
+@@ -83,3 +82,7 @@
+   - type: Reactive
+     groups:
+       Acidic: [Touch]
++  - type: Tag
++    tags:
++    - SlowImmune
++    - KnockdownImmune

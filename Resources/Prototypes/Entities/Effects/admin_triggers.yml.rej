@@ -1,0 +1,7 @@
+diff a/Resources/Prototypes/Entities/Effects/admin_triggers.yml b/Resources/Prototypes/Entities/Effects/admin_triggers.yml	(rejected hunks)
+@@ -117,4 +117,4 @@
+   - type: SingularityDistortion
+     intensity: 10
+     falloffPower: 1.5
+-      
++

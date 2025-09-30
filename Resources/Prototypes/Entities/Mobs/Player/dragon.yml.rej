@@ -1,0 +1,9 @@
+diff a/Resources/Prototypes/Entities/Mobs/Player/dragon.yml b/Resources/Prototypes/Entities/Mobs/Player/dragon.yml	(rejected hunks)
+@@ -154,6 +153,7 @@
+     tags:
+     - CannotSuicide
+     - DoorBumpOpener
++    - StunImmune
+   - type: Puller
+     needsHands: false
+   - type: RandomMetadata

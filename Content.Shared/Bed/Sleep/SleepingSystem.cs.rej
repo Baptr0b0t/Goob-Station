@@ -1,0 +1,12 @@
+diff a/Content.Shared/Bed/Sleep/SleepingSystem.cs b/Content.Shared/Bed/Sleep/SleepingSystem.cs	(rejected hunks)
+@@ -106,9 +107,7 @@ private void OnSleepStateChanged(Entity<MobStateComponent> ent, ref SleepStateCh
+     {
+         if (args.FellAsleep)
+         {
+-            // Expiring status effects would remove the components needed for sleeping
+-            _statusEffectOld.TryRemoveStatusEffect(ent.Owner, "Stun");
+-
++            // Just in case we're not using the sleeping status
+             EnsureComp<StunnedComponent>(ent);
+             EnsureComp<KnockedDownComponent>(ent);
+ 

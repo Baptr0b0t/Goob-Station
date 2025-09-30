@@ -1,0 +1,7 @@
+diff a/Content.Client/Light/RgbLightControllerSystem.cs b/Content.Client/Light/RgbLightControllerSystem.cs	(rejected hunks)
+@@ -1,4 +1,5 @@
+ using System.Linq;
++using System.Numerics;
+ using Content.Client.Items.Systems;
+ using Content.Shared.Clothing;
+ using Content.Shared.Hands;

@@ -117,6 +117,20 @@
     whitelist:
       tags:
       - DrinkBottle
+  - type: Transform
+    noRot: false
+  - type: Machine
+    board: SodaDispenserMachineCircuitboard
+  - type: GuideHelp
+    guides:
+    - Bartender
+    - Drinks
+
+- type: entity
+  parent: SodaDispenserEmpty
+  id: SodaDispenser
+  suffix: Filled
+  components:
   - type: StorageFill
     contents:
     - id: DrinkCoconutWaterJug
@@ -138,16 +152,3 @@
     - id: DrinkTeaJug
     - id: DrinkTonicWaterBottleFull
     - id: DrinkWaterMelonJuiceJug
-  - type: Transform
-    noRot: false
-  - type: Machine
-    board: SodaDispenserMachineCircuitboard
-  - type: GuideHelp
-    guides:
-    - Bartender
-    - Drinks
-
-- type: entity
-  parent: SodaDispenser
-  id: SodaDispenserEmpty
-  suffix: Empty

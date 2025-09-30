@@ -1,0 +1,14 @@
+diff a/Resources/Prototypes/Entities/Structures/Wallmounts/Misc/noticeboard.yml b/Resources/Prototypes/Entities/Structures/Wallmounts/Misc/noticeboard.yml	(rejected hunks)
+@@ -1,11 +1,9 @@
+ ﻿- type: entity
++  parent: BaseWallmount
+   id: NoticeBoard
+   name: notice board
+   description: Is there a job for a witcher?
+-  placement:
+-    mode: SnapgridCenter
+   components:
+-  - type: WallMount
+   - type: Sprite
+     drawdepth: WallMountedItems
+     sprite: Structures/Wallmounts/noticeboard.rsi

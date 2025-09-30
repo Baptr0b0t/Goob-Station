@@ -1,0 +1,9 @@
+diff a/Resources/Prototypes/Entities/Objects/Specific/Janitorial/soap.yml b/Resources/Prototypes/Entities/Objects/Specific/Janitorial/soap.yml	(rejected hunks)
+@@ -158,6 +158,7 @@
+   - type: Slippery
+   - type: StepTrigger
+     intersectRatio: 0.04
++  - type: TriggerOnStepTrigger
+   - type: Item
+     heldPrefix: syndie
+   - type: Fixtures

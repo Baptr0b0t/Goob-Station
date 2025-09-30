@@ -1,0 +1,24 @@
+diff a/Content.Shared/StatusEffect/StatusEffectsSystem.cs b/Content.Shared/StatusEffect/StatusEffectsSystem.cs	(rejected hunks)
+@@ -353,7 +353,7 @@ public bool CanApplyEffect(EntityUid uid, string key, StatusEffectsComponent? st
+             if (!Resolve(uid, ref status, false))
+                 return false;
+ 
+-            var ev = new BeforeStatusEffectAddedEvent(key);
++            var ev = new BeforeOldStatusEffectAddedEvent(key);
+             RaiseLocalEvent(uid, ref ev);
+             if (ev.Cancelled)
+                 return false;
+@@ -481,6 +481,13 @@ public bool TryGetTime(EntityUid uid, string key,
+         }
+     }
+ 
++    /// <summary>
++    /// Raised on an entity before a status effect is added to determine if adding it should be cancelled.
++    /// Obsolete version of <see cref="BeforeStatusEffectAddedEvent" />
++    /// </summary>
++    [ByRefEvent, Obsolete("Migration to StatusEffectNew.StatusEffectsSystem is required")]
++    public record struct BeforeOldStatusEffectAddedEvent(string EffectKey, bool Cancelled = false);
++
+     public readonly struct StatusEffectAddedEvent
+     {
+         public readonly EntityUid Uid;

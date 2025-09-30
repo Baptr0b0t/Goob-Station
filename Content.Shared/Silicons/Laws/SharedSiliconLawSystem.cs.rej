@@ -1,0 +1,7 @@
+diff a/Content.Shared/Silicons/Laws/SharedSiliconLawSystem.cs b/Content.Shared/Silicons/Laws/SharedSiliconLawSystem.cs	(rejected hunks)
+@@ -1,4 +1,4 @@
+-﻿using Content.Shared.Emag.Systems;
++using Content.Shared.Emag.Systems;
+ using Content.Shared.Mind;
+ using Content.Shared.Popups;
+ using Content.Shared.Silicons.Laws.Components;

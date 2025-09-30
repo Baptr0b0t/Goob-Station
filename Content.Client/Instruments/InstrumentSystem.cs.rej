@@ -1,0 +1,9 @@
+diff a/Content.Client/Instruments/InstrumentSystem.cs b/Content.Client/Instruments/InstrumentSystem.cs	(rejected hunks)
+@@ -294,7 +294,6 @@ public bool OpenMidi(EntityUid uid, byte[] data, InstrumentComponent? instrument
+         SetMaster(uid, null);
+         TrySetChannels(uid, data);
+ 
+-        instrument.MidiEventBuffer.Clear();
+         instrument.Renderer.OnMidiEvent += instrument.MidiEventBuffer.Add;
+         return true;
+     }

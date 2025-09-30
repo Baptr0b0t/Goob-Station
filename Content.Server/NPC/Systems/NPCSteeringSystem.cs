@@ -153,6 +153,8 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
 
     private object _obstacles = new();
 
+    private int _activeSteeringCount;
+
     public override void Initialize()
     {
         base.Initialize();

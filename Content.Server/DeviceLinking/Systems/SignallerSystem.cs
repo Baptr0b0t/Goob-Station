@@ -24,7 +24,6 @@ namespace Content.Server.DeviceLinking.Systems;
 public sealed class SignallerSystem : EntitySystem
 {
     [Dependency] private readonly DeviceLinkSystem _link = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
 
     public override void Initialize()
@@ -33,7 +32,6 @@ public sealed class SignallerSystem : EntitySystem
 
         SubscribeLocalEvent<SignallerComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<SignallerComponent, UseInHandEvent>(OnUseInHand);
-        SubscribeLocalEvent<SignallerComponent, TriggerEvent>(OnTrigger);
     }
 
     private void OnInit(EntityUid uid, SignallerComponent component, ComponentInit args)

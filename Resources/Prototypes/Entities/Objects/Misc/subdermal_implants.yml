@@ -158,17 +158,18 @@
   description: This implant lets the user honk anywhere at any time.
   categories: [ HideSpawnMenu ]
   components:
-    - type: SubdermalImplant
-      implantAction: ActionActivateHonkImplant
-    - type: TriggerImplantAction
-    - type: EmitSoundOnTrigger
-      sound:
-        collection: BikeHorn
-        params:
-          variation: 0.125
-    - type: Tag
-      tags:
-      - BikeHorn
+  - type: SubdermalImplant
+    implantAction: ActionActivateHonkImplant
+  - type: TriggerOnActivateImplant
+  - type: EmitSoundOnTrigger
+    predicted: true
+    sound:
+      collection: BikeHorn
+      params:
+        variation: 0.125
+  - type: Tag
+    tags:
+    - BikeHorn
 
 #Security implants
 
@@ -410,11 +411,13 @@
   - type: TriggerOnMobstateChange
     mobState:
     - Dead
-  - type: TriggerImplantAction
+  - type: TriggerOnActivateImplant
   - type: GibOnTrigger
+    targetUser: true
     deleteItems: true
   - type: SpawnOnTrigger
     proto: Acidifier
+    predicted: true
   - type: Tag
     tags:
     - SubdermalImplant
@@ -438,7 +441,8 @@
       mobState:
       - Critical
       - Dead
-    - type: Rattle
+    - type: RattleOnTrigger
+      targetUser: true
 
 - type: entity
   parent: BaseSubdermalImplant
@@ -484,5 +488,5 @@
   description: This implant will inform the Centcomm radio channel should the user fall into critical condition or die.
   categories: [ HideSpawnMenu ]
   components:
-  - type: Rattle
+  - type: RattleOnTrigger
     radioChannel: CentCom

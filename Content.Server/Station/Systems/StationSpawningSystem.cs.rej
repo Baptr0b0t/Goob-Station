@@ -1,0 +1,10 @@
+diff a/Content.Server/Station/Systems/StationSpawningSystem.cs b/Content.Server/Station/Systems/StationSpawningSystem.cs	(rejected hunks)
+@@ -1,7 +1,7 @@
+ using Content.Server.Access.Systems;
+ using Content.Server.Humanoid;
+ using Content.Server.IdentityManagement;
+-using Content.Server.Mind.Commands;
++using Content.Server.Mind;
+ using Content.Server.PDA;
+ using Content.Server.Station.Components;
+ using Content.Shared.Access.Components;

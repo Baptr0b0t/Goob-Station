@@ -1,0 +1,10 @@
+diff a/Resources/Prototypes/Entities/Mobs/NPCs/silicon.yml b/Resources/Prototypes/Entities/Mobs/NPCs/silicon.yml	(rejected hunks)
+@@ -15,8 +15,6 @@
+     bodyType: KinematicController # Same for all inheritors
+   - type: StatusEffects
+     allowed:
+-    - Stun
+-    - SlowedDown
+     - Stutter
+     - Electrocution
+   - type: Repairable

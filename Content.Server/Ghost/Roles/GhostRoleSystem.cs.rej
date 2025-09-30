@@ -1,0 +1,10 @@
+diff a/Content.Server/Ghost/Roles/GhostRoleSystem.cs b/Content.Server/Ghost/Roles/GhostRoleSystem.cs	(rejected hunks)
+@@ -698,7 +697,7 @@ private void OnSpawnerTakeRole(EntityUid uid, GhostRoleMobSpawnerComponent compo
+         RaiseLocalEvent(mob, spawnedEvent);
+ 
+         if (ghostRole.MakeSentient)
+-            MakeSentientCommand.MakeSentient(mob, EntityManager, ghostRole.AllowMovement, ghostRole.AllowSpeech);
++            _mindSystem.MakeSentient(mob, ghostRole.AllowMovement, ghostRole.AllowSpeech);
+ 
+         EnsureComp<MindContainerComponent>(mob);
+ 

@@ -1,0 +1,11 @@
+diff a/Resources/Prototypes/Entities/Structures/Dispensers/booze.yml b/Resources/Prototypes/Entities/Structures/Dispensers/booze.yml	(rejected hunks)
+@@ -1,7 +1,7 @@
+ - type: entity
+-  id: BoozeDispenser
++  id: BoozeDispenserEmpty
+   name: booze dispenser
+-  suffix: Filled
++  suffix: Empty
+   description: A booze dispenser with a single slot for a container to be filled.
+   parent: ReagentDispenserBase
+   components:

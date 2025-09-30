@@ -1,0 +1,11 @@
+diff a/Resources/Prototypes/Entities/Mobs/Species/base.yml b/Resources/Prototypes/Entities/Mobs/Species/base.yml	(rejected hunks)
+@@ -119,9 +119,6 @@
+       - !type:WashCreamPieReaction
+   - type: StatusEffects
+     allowed:
+-    - Stun
+-    - Friction
+-    - SlowedDown
+     - Stutter
+     - Electrocution
+     - Drunk

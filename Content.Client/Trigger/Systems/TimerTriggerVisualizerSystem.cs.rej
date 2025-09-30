@@ -1,0 +1,15 @@
+diff a/Content.Client/Trigger/Systems/TimerTriggerVisualizerSystem.cs b/Content.Client/Trigger/Systems/TimerTriggerVisualizerSystem.cs	(rejected hunks)
+@@ -1,11 +1,10 @@
++using Content.Client.Trigger.Components;
+ using Content.Shared.Trigger;
+ using Robust.Client.Animations;
+ using Robust.Client.GameObjects;
+-using Robust.Shared.Audio;
+ using Robust.Shared.Audio.Systems;
+-using Robust.Shared.GameObjects;
+ 
+-namespace Content.Client.Trigger;
++namespace Content.Client.Trigger.Systems;
+ 
+ public sealed class TimerTriggerVisualizerSystem : VisualizerSystem<TimerTriggerVisualsComponent>
+ {

@@ -1,0 +1,7 @@
+diff a/Resources/Prototypes/Entities/Objects/Weapons/Bombs/spider.yml b/Resources/Prototypes/Entities/Objects/Weapons/Bombs/spider.yml	(rejected hunks)
+@@ -44,4 +45,4 @@
+       enum.Trigger.TriggerVisuals.VisualState:
+         base:
+           Primed: { state: primed }
+-          Unprimed: { state: complete }
++          Unprimed: { state: icon }

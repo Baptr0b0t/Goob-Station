@@ -1,0 +1,10 @@
+diff a/Content.Server/Atmos/EntitySystems/FlammableSystem.cs b/Content.Server/Atmos/EntitySystems/FlammableSystem.cs	(rejected hunks)
+@@ -394,7 +394,7 @@ public void Resist(EntityUid uid,
+             flammable.Resisting = true;
+ 
+             _popup.PopupEntity(Loc.GetString("flammable-component-resist-message"), uid, uid);
+-            _stunSystem.TryParalyze(uid, TimeSpan.FromSeconds(2f), true);
++            _stunSystem.TryUpdateParalyzeDuration(uid, TimeSpan.FromSeconds(2f));
+ 
+             // TODO FLAMMABLE: Make this not use TimerComponent...
+             uid.SpawnTimer(2000, () =>

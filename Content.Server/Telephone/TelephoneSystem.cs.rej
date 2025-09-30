@@ -1,0 +1,10 @@
+diff a/Content.Server/Telephone/TelephoneSystem.cs b/Content.Server/Telephone/TelephoneSystem.cs	(rejected hunks)
+@@ -3,8 +3,6 @@
+ using Content.Server.Chat.Systems;
+ using Content.Server.Interaction;
+ using Content.Server.Power.EntitySystems;
+-using Content.Server.Speech;
+-using Content.Server.Speech.Components;
+ using Content.Shared.Chat;
+ using Content.Shared.Database;
+ using Content.Shared.Labels.Components;

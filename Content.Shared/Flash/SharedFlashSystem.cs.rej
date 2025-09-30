@@ -1,0 +1,21 @@
+diff a/Content.Shared/Flash/SharedFlashSystem.cs b/Content.Shared/Flash/SharedFlashSystem.cs	(rejected hunks)
+@@ -20,6 +20,7 @@
+ using Robust.Shared.Random;
+ using Robust.Shared.Timing;
+ using System.Linq;
++using Content.Shared.Movement.Systems;
+ 
+ namespace Content.Shared.Flash;
+ 
+@@ -163,9 +165,9 @@ public void Flash(
+             return;
+ 
+         if (stunDuration != null)
+-            _stun.TryParalyze(target, stunDuration.Value, true);
++            _stun.TryUpdateParalyzeDuration(target, stunDuration.Value);
+         else
+-            _stun.TrySlowdown(target, flashDuration, true, slowTo, slowTo);
++            _movementMod.TryUpdateMovementSpeedModDuration(target, MovementModStatusSystem.FlashSlowdown, flashDuration, slowTo);
+ 
+         if (displayPopup && user != null && target != user && Exists(user.Value))
+         {

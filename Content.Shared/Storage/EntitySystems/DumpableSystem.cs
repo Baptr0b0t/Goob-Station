@@ -130,10 +130,12 @@ public sealed class DumpableSystem : EntitySystem
 
     private void OnAfterInteract(EntityUid uid, DumpableComponent component, AfterInteractEvent args)
     {
-        if (!args.CanReach || args.Handled)
+        if (!args.CanReach || args.Handled || args.Target is not { } target)
             return;
 
-        if (!HasComp<DisposalUnitComponent>(args.Target) && !HasComp<PlaceableSurfaceComponent>(args.Target))
+        var evt = new GetDumpableVerbEvent(args.User, null);
+        RaiseLocalEvent(target, ref evt);
+        if (evt.Verb is null)
             return;
 
         if (!TryComp<StorageComponent>(uid, out var storage))
@@ -142,7 +144,7 @@ public sealed class DumpableSystem : EntitySystem
         if (!storage.Container.ContainedEntities.Any())
             return;
 
-        StartDoAfter(uid, args.Target.Value, args.User, component);
+        StartDoAfter(uid, target, args.User, component);
         args.Handled = true;
     }
 

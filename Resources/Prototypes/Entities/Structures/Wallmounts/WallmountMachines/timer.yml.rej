@@ -1,0 +1,43 @@
+diff a/Resources/Prototypes/Entities/Structures/Wallmounts/WallmountMachines/timer.yml b/Resources/Prototypes/Entities/Structures/Wallmounts/WallmountMachines/timer.yml	(rejected hunks)
+@@ -1,24 +1,28 @@
+ - type: entity
++  parent: BaseWallmountMachine
+   id: SignalTimer
+   name: signal timer
+   description: It's a timer for sending timed signals to things.
+-  placement:
+-    mode: SnapgridCenter
+-    snap:
+-    - Wallmount
+   components:
+   - type: StationAiWhitelist
+-  - type: Transform
+-    anchored: true
+   - type: WallMount
+     arc: 360
+-  - type: Clickable
+-  - type: InteractionOutline
+   - type: Sprite
+     drawdepth: SmallObjects
+     sprite: Structures/Wallmounts/switch.rsi
+     state: on
+   - type: Appearance
++  - type: Destructible
++    thresholds:
++    - trigger:
++        !type:DamageTrigger
++        damage: 200
++      behaviors:
++      - !type:DoActsBehavior
++        acts: [ "Destruction" ]
++      - !type:PlaySoundBehavior
++        sound:
++          collection: MetalGlassBreak
+   - type: Rotatable
+   - type: SignalTimer
+     canEditLabel: false
+@@ -121,3 +115,4 @@
+     graph: Timer
+     node: frame
+   - type: WallMount
++    arc: 360

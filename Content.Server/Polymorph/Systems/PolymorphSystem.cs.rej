@@ -1,0 +1,29 @@
+diff a/Content.Server/Polymorph/Systems/PolymorphSystem.cs b/Content.Server/Polymorph/Systems/PolymorphSystem.cs	(rejected hunks)
+@@ -1,10 +1,7 @@
+ using Content.Server.Actions;
+ using Content.Server.Humanoid;
+ using Content.Server.Inventory;
+-using Content.Server.Mind.Commands;
+ using Content.Server.Polymorph.Components;
+-using Content.Shared.Actions;
+-using Content.Shared.Actions.Components;
+ using Content.Shared.Buckle;
+ using Content.Shared.Coordinates;
+ using Content.Shared.Damage;
+@@ -61,7 +58,6 @@ public override void Initialize()
+         SubscribeLocalEvent<PolymorphedEntityComponent, DestructionEventArgs>(OnDestruction);
+ 
+         InitializeMap();
+-        InitializeTrigger();
+     }
+ 
+     public override void Update(float frameTime)
+@@ -210,7 +204,7 @@ private void OnDestruction(Entity<PolymorphedEntityComponent> ent, ref Destructi
+                 ("child", Identity.Entity(child, EntityManager))),
+                 child);
+ 
+-        MakeSentientCommand.MakeSentient(child, EntityManager);
++        _mindSystem.MakeSentient(child);
+ 
+         var polymorphedComp = Factory.GetComponent<PolymorphedEntityComponent>();
+         polymorphedComp.Parent = uid;

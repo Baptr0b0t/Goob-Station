@@ -105,7 +105,13 @@
     price: 40
   - type: PayloadTrigger
     components:
-    - type: OnUseTimerTrigger
+    - type: TriggerOnUse
+      keyOut: startTimer
+    - type: TimerTrigger
+      keysIn:
+      - startTimer
+      # use the default trigger key so it can activate any inserted payload
+      keyOut: trigger
       delay: 5
       delayOptions: [3, 5, 10, 15, 30]
       initialBeepDelay: 0

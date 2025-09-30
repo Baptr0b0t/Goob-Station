@@ -182,8 +182,9 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         }
 
         entity.Comp.StaminaDamage = 0;
-        AdjustSlowdown(entity.Owner);
+        AdjustStatus(entity.Owner);
         RemComp<ActiveStaminaComponent>(entity);
+        _status.TryRemoveStatusEffect(entity, StaminaLow);
         UpdateStaminaVisuals(entity);
         Dirty(entity);
     }
@@ -402,6 +403,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         if (component.AfterCritical && oldDamage > component.StaminaDamage && component.StaminaDamage <= 0f)
         {
             component.AfterCritical = false; // Since the recovery from the crit has been completed, we are no longer 'after crit'
+            _status.TryRemoveStatusEffect(uid, StaminaLow);
         }
 
         if (!component.Critical)

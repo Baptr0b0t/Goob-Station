@@ -171,15 +171,9 @@ namespace Content.Server.Nutrition.EntitySystems
             {
                 if (_itemSlots.TryEject(uid, itemSlot, user: null, out var item))
                 {
-                    if (TryComp<OnUseTimerTriggerComponent>(item.Value, out var timerTrigger))
+                    if (TryComp<TimerTriggerComponent>(item.Value, out var timerTrigger))
                     {
-                        _trigger.HandleTimerTrigger(
-                            item.Value,
-                            null,
-                            timerTrigger.Delay,
-                            timerTrigger.BeepInterval,
-                            timerTrigger.InitialBeepDelay,
-                            timerTrigger.BeepSound);
+                        _trigger.ActivateTimerTrigger((item.Value, timerTrigger));
                     }
                 }
             }

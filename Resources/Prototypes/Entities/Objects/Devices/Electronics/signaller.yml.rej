@@ -1,0 +1,8 @@
+diff a/Resources/Prototypes/Entities/Objects/Devices/Electronics/signaller.yml b/Resources/Prototypes/Entities/Objects/Devices/Electronics/signaller.yml	(rejected hunks)
+@@ -43,4 +47,4 @@
+   - type: WirelessNetworkConnection
+     range: 50
+   - type: StaticPrice
+-    price: 30
+\ No newline at end of file
++    price: 30

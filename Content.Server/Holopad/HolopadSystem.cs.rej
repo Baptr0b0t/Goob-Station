@@ -1,0 +1,9 @@
+diff a/Content.Server/Holopad/HolopadSystem.cs b/Content.Server/Holopad/HolopadSystem.cs	(rejected hunks)
+@@ -1,7 +1,6 @@
+ using Content.Server.Chat.Systems;
+ using Content.Server.Popups;
+ using Content.Server.Power.EntitySystems;
+-using Content.Server.Speech.Components;
+ using Content.Server.Telephone;
+ using Content.Shared.Access.Systems;
+ using Content.Shared.Audio;

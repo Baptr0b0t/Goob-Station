@@ -1,0 +1,27 @@
+diff a/Resources/Prototypes/Entities/Structures/Wallmounts/Storage/shelfs.yml b/Resources/Prototypes/Entities/Structures/Wallmounts/Storage/shelfs.yml	(rejected hunks)
+@@ -1,23 +1,15 @@
+ # Parents
+ - type: entity
+-  abstract: true
++  parent: BaseWallmount
+   id: ShelfBase
++  abstract: true
+   name: shelf
+   description: A strange place to place, well, anything really. You feel like you shouldn't be seeing this.
+-  placement:
+-    mode: SnapgridCenter
+-    snap:
+-    - Wallmount
+   components:
+-  - type: Clickable
+-  - type: Tag
+-    tags:
+-    - Structure
+   - type: Sprite
+     drawdepth: WallMountedItems
+     sprite: Structures/Storage/Shelfs/wood.rsi
+     state: base
+-  - type: Transform
+   - type: Damageable
+     damageModifierSet: Wood
+     damageContainer: StructuralInorganic

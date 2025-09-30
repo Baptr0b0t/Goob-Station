@@ -1,0 +1,6 @@
+diff a/Content.Server/PneumaticCannon/PneumaticCannonSystem.cs b/Content.Server/PneumaticCannon/PneumaticCannonSystem.cs	(rejected hunks)
+@@ -1,4 +1,3 @@
+-using Content.Server.Atmos.Components;
+ using Content.Server.Atmos.EntitySystems;
+ using Content.Server.Storage.EntitySystems;
+ using Content.Server.Stunnable;

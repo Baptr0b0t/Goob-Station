@@ -1,0 +1,10 @@
+diff a/Content.Shared/Glue/GlueSystem.cs b/Content.Shared/Glue/GlueSystem.cs	(rejected hunks)
+@@ -1,7 +1,6 @@
+-using Content.Server.Administration.Logs;
++using Content.Shared.Administration.Logs;
+ using Content.Shared.Chemistry.EntitySystems;
+ using Content.Shared.Database;
+-using Content.Shared.Glue;
+ using Content.Shared.Hands;
+ using Content.Shared.Interaction;
+ using Content.Shared.Interaction.Components;

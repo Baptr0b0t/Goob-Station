@@ -118,7 +118,7 @@ namespace Content.Server.Medical
         [Dependency] private readonly PopupSystem _popup = default!;
         [Dependency] private readonly PuddleSystem _puddle = default!;
         [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
-        [Dependency] private readonly StunSystem _stun = default!;
+        [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
         [Dependency] private readonly ThirstSystem _thirst = default!;
         [Dependency] private readonly ForensicsSystem _forensics = default!;
         [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
@@ -148,8 +148,7 @@ namespace Content.Server.Medical
             // It fully empties the stomach, this amount from the chem stream is relatively small
             var solutionSize = (MathF.Abs(thirstAdded) + MathF.Abs(hungerAdded)) / 6;
             // Apply a bit of slowdown
-            if (TryComp<StatusEffectsComponent>(uid, out var status))
-                _stun.TrySlowdown(uid, TimeSpan.FromSeconds(solutionSize), true, 0.5f, 0.5f, status);
+            _movementMod.TryUpdateMovementSpeedModDuration(uid, MovementModStatusSystem.VomitingSlowdown, TimeSpan.FromSeconds(solutionSize),  0.5f);
 
             // TODO: Need decals
             var solution = new Solution();

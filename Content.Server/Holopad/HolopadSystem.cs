@@ -28,6 +28,7 @@ using Content.Shared.Labels.Components;
 using Content.Shared.Power;
 using Content.Shared.Silicons.StationAi;
 using Content.Shared.Speech;
+using Content.Shared.Speech.Components;
 using Content.Shared.Telephone;
 using Content.Shared.UserInterface;
 using Content.Shared.Verbs;

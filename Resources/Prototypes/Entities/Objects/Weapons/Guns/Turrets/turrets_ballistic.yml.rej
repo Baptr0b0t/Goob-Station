@@ -1,0 +1,17 @@
+diff a/Resources/Prototypes/Entities/Objects/Weapons/Guns/Turrets/turrets_ballistic.yml b/Resources/Prototypes/Entities/Objects/Weapons/Guns/Turrets/turrets_ballistic.yml	(rejected hunks)
+@@ -47,7 +47,7 @@
+   - type: Repairable
+     qualityNeeded: "Anchoring"
+     doAfterDelay: 3
+-  - type: TriggerWhenEmpty
++  - type: TriggerOnEmptyGunshot
+   - type: ExplodeOnTrigger
+   - type: Explosive
+     explosionType: Default
+@@ -135,4 +135,4 @@
+     interactSuccessString: petting-success-generic
+     interactFailureString: petting-failure-generic
+     interactSuccessSound:
+-      path: /Audio/Animals/snake_hiss.ogg
+\ No newline at end of file
++      path: /Audio/Animals/snake_hiss.ogg

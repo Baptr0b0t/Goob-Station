@@ -93,7 +93,6 @@
     baseSprintSpeed : 4
   - type: StatusEffects
     allowed:
-    - SlowedDown
     - Stutter
     - Electrocution
     - TemporaryBlindness

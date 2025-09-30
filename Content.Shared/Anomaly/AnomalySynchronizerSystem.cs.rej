@@ -1,0 +1,46 @@
+diff a/Content.Shared/Anomaly/AnomalySynchronizerSystem.cs b/Content.Shared/Anomaly/AnomalySynchronizerSystem.cs	(rejected hunks)
+@@ -1,33 +1,30 @@
+ using System.Linq;
+-using System.Numerics;
+-using Content.Server.Anomaly.Components;
+-using Content.Server.DeviceLinking.Systems;
+-using Content.Server.Power.Components;
+-using Content.Server.Power.EntitySystems;
+ using Content.Shared.Anomaly.Components;
++using Content.Shared.DeviceLinking;
+ using Content.Shared.Examine;
+ using Content.Shared.Interaction;
+ using Content.Shared.Popups;
+ using Content.Shared.Power;
+-using Robust.Shared.Audio.Systems;
++using Content.Shared.Power.EntitySystems;
+ using Content.Shared.Verbs;
++using Robust.Shared.Audio.Systems;
+ using Robust.Shared.Timing;
+ 
+-namespace Content.Server.Anomaly;
++namespace Content.Shared.Anomaly;
+ 
+ /// <summary>
+-/// a device that allows you to translate anomaly activity into multitool signals.
++/// A device that allows you to translate anomaly activity into multitool signals.
+ /// </summary>
+ public sealed partial class AnomalySynchronizerSystem : EntitySystem
+ {
+-    [Dependency] private readonly AnomalySystem _anomaly = default!;
+-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+     [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
+-    [Dependency] private readonly DeviceLinkSystem _signal = default!;
+-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+-    [Dependency] private readonly PowerReceiverSystem _power = default!;
+     [Dependency] private readonly IGameTiming _timing = default!;
++    [Dependency] private readonly SharedAnomalySystem _anomaly = default!;
++    [Dependency] private readonly SharedAudioSystem _audio = default!;
++    [Dependency] private readonly SharedDeviceLinkSystem _deviceLink = default!;
++    [Dependency] private readonly SharedPopupSystem _popup = default!;
++    [Dependency] private readonly SharedPowerReceiverSystem _power = default!;
++    [Dependency] private readonly SharedTransformSystem _transform = default!;
+ 
+     public override void Initialize()
+     {

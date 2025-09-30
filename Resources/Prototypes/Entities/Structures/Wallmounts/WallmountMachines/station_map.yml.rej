@@ -1,0 +1,35 @@
+diff a/Resources/Prototypes/Entities/Structures/Wallmounts/WallmountMachines/station_map.yml b/Resources/Prototypes/Entities/Structures/Wallmounts/WallmountMachines/station_map.yml	(rejected hunks)
+@@ -1,22 +1,15 @@
+ - type: entity
++  parent: BaseWallmountMetallic
+   id: StationMapBroken
+   name: station map
+   description: A virtual map of the surrounding station.
+   suffix: Wall broken
+-  placement:
+-    mode: SnapgridCenter
+   components:
+-    - type: InteractionOutline
+-    - type: Clickable
+-    - type: Transform
+-      anchored: true
+     - type: Sprite
+       sprite: Structures/Machines/station_map.rsi
+       drawdepth: WallMountedItems
+       layers:
+         - state: station_map_broken
+-    - type: Damageable
+-      damageContainer: StructuralInorganic
+     - type: Destructible
+       thresholds:
+         - trigger:
+@@ -122,9 +121,3 @@
+   - type: Construction
+     graph: StationMap
+     node: assembly
+-  - type: Transform
+-    anchored: true
+-  placement:
+-    mode: SnapgridCenter
+-    snap:
+-    - Wallmount

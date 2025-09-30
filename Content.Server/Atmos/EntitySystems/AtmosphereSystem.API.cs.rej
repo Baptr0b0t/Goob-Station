@@ -1,0 +1,14 @@
+diff a/Content.Server/Atmos/EntitySystems/AtmosphereSystem.API.cs b/Content.Server/Atmos/EntitySystems/AtmosphereSystem.API.cs	(rejected hunks)
+@@ -329,3 +337,12 @@ [ByRefEvent] private record struct HotspotExtinguishMethodEvent
+     [ByRefEvent] private record struct IsHotspotActiveMethodEvent
+         (EntityUid Grid, Vector2i Tile, bool Result = false, bool Handled = false);
+ }
++
++
++/// <summary>
++/// Raised broadcasted when a pipe node group within a grid has been removed.
++/// </summary>
++/// <param name="Grid">The grid with the removed node group.</param>
++/// <param name="NetId">The net id of the removed node group.</param>
++[ByRefEvent]
++public record struct PipeNodeGroupRemovedEvent(EntityUid Grid, int NetId);

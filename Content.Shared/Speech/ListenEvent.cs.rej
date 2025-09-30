@@ -1,0 +1,7 @@
+diff a/Content.Shared/Speech/ListenEvent.cs b/Content.Shared/Speech/ListenEvent.cs	(rejected hunks)
+@@ -1,4 +1,4 @@
+-namespace Content.Server.Speech;
++namespace Content.Shared.Speech;
+ 
+ public sealed class ListenEvent : EntityEventArgs
+ {

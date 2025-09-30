@@ -1,0 +1,9 @@
+diff a/Resources/Prototypes/Entities/Mobs/NPCs/animals.yml b/Resources/Prototypes/Entities/Mobs/NPCs/animals.yml	(rejected hunks)
+@@ -113,6 +113,7 @@
+       10: Dead
+   - type: Stamina
+     critThreshold: 10
++    animationThreshold: 1
+   - type: DamageStateVisuals
+     states:
+       Alive:

@@ -1,0 +1,9 @@
+diff a/Resources/Prototypes/Entities/Objects/Weapons/Throwable/scattering_grenades.yml b/Resources/Prototypes/Entities/Objects/Weapons/Throwable/scattering_grenades.yml	(rejected hunks)
+@@ -185,5 +195,7 @@
+     initialBeepDelay: 0
+     beepInterval: 2
+   - type: EmitSoundOnTrigger
++    keysIn:
++    - timer
+     sound:
+       path: "/Audio/Weapons/Guns/Gunshots/batrifle.ogg"

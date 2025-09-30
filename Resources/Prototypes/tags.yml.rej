@@ -1,0 +1,11 @@
+diff a/Resources/Prototypes/tags.yml b/Resources/Prototypes/tags.yml	(rejected hunks)
+@@ -1331,6 +1337,9 @@
+ - type: Tag
+   id: StringInstrument
+ 
++- type: Tag
++  id: StunImmune
++
+ - type: Tag
+   id: SubdermalImplant
+ 

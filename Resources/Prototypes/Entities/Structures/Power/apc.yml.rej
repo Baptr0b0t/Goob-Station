@@ -1,0 +1,7 @@
+diff a/Resources/Prototypes/Entities/Structures/Power/apc.yml b/Resources/Prototypes/Entities/Structures/Power/apc.yml	(rejected hunks)
+@@ -1,4 +1,5 @@
+ - type: entity
++  parent: BaseWallmount
+   categories: [ HideSpawnMenu ]
+   id: BaseAPC
+   name: APC

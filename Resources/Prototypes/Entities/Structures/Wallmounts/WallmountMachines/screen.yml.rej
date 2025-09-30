@@ -1,0 +1,22 @@
+diff a/Resources/Prototypes/Entities/Structures/Wallmounts/WallmountMachines/screen.yml b/Resources/Prototypes/Entities/Structures/Wallmounts/WallmountMachines/screen.yml	(rejected hunks)
+@@ -1,19 +1,9 @@
+ - type: entity
++  parent: BaseWallmountMachine
+   id: Screen
+   name: screen
+   description: Displays text or time.
+-  placement:
+-    mode: SnapgridCenter
+-    snap:
+-    - Wallmount
+   components:
+-  - type: Transform
+-    anchored: true
+-  - type: WallMount
+-    arc: 360
+-  - type: InteractionOutline
+-  - type: Clickable
+-  - type: Appearance
+   - type: Rotatable
+   - type: TextScreenVisuals
+     textOffset: 0,3

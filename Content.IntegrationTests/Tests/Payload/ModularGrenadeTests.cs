@@ -37,19 +37,19 @@ public sealed class ModularGrenadeTests : InteractionTest
         await InteractUsing(Cable);
 
         // Insert & remove trigger
-        AssertComp<OnUseTimerTriggerComponent>(false);
+        AssertComp<TimerTriggerComponent>(false);
         await InteractUsing(Trigger);
-        AssertComp<OnUseTimerTriggerComponent>();
+        AssertComp<TimerTriggerComponent>();
         await FindEntity(Trigger, LookupFlags.Uncontained, shouldSucceed: false);
         await InteractUsing(Pry);
-        AssertComp<OnUseTimerTriggerComponent>(false);
+        AssertComp<TimerTriggerComponent>(false);
 
         // Trigger was dropped to floor, not deleted.
         await FindEntity(Trigger, LookupFlags.Uncontained);
 
         // Re-insert
         await InteractUsing(Trigger);
-        AssertComp<OnUseTimerTriggerComponent>();
+        AssertComp<TimerTriggerComponent>();
 
         // Insert & remove payload.
         await InteractUsing(Payload);

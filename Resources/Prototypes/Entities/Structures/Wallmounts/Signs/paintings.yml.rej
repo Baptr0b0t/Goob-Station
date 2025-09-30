@@ -1,0 +1,7 @@
+diff a/Resources/Prototypes/Entities/Structures/Wallmounts/Signs/paintings.yml b/Resources/Prototypes/Entities/Structures/Wallmounts/Signs/paintings.yml	(rejected hunks)
+@@ -187,4 +184,4 @@
+   description: This painting is a sad clown! It sparks joy.
+   components:
+   - type: Sprite
+-    state: painting19  
++    state: painting19

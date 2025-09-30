@@ -1,0 +1,9 @@
+diff a/Resources/Prototypes/Entities/Objects/Consumable/Food/produce.yml b/Resources/Prototypes/Entities/Objects/Consumable/Food/produce.yml	(rejected hunks)
+@@ -2694,6 +2694,7 @@
+   - type: Item
+     sprite: Objects/Specific/Hydroponics/cherry.rsi
+     heldPrefix: pit
++    size: Tiny
+   - type: Tag
+     tags:
+     - Recyclable

@@ -966,6 +966,7 @@
     totalIntensity: 150 # a ~2 tile radius
     intensitySlope: 5
     maxIntensity: 10
+    canCreateVacuum: false
 
 - type: entity
   id: BulletGrenadeFlash
@@ -1001,9 +1002,16 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    totalIntensity: 175 # about a ~6 tile radius
+    totalIntensity: 50
     intensitySlope: 1
-    maxIntensity: 10
+    maxIntensity: 5
+    canCreateVacuum: false
+  - type: ContainerContainer
+    containers:
+      cluster-payload: !type:Container
+  - type: ProjectileGrenade
+    fillPrototype: PelletClusterLessLethal
+    capacity: 30
 
 - type: entity
   parent: BaseBulletTrigger
@@ -1015,8 +1023,6 @@
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
     - state: cleanade
-  - type: ActiveTimerTrigger
-    timeRemaining: 0.3
   - type: SmokeOnTrigger
     duration: 3.5
     spreadAmount: 30
@@ -1025,7 +1031,7 @@
       reagents:
       - ReagentId: SpaceCleaner
         Quantity: 30
-  - type: SoundOnTrigger
+  - type: EmitSoundOnTrigger
     sound: /Audio/Items/smoke_grenade_smoke.ogg
   - type: ExplodeOnTrigger
   - type: Explosive

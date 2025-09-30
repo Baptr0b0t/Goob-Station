@@ -1,0 +1,10 @@
+diff a/Content.Server/SurveillanceCamera/Systems/SurveillanceCameraSystem.cs b/Content.Server/SurveillanceCamera/Systems/SurveillanceCameraSystem.cs	(rejected hunks)
+@@ -1,6 +1,8 @@
++using Content.Server.Administration.Logs;
+ using Content.Server.DeviceNetwork.Systems;
+ using Content.Server.Emp;
+ using Content.Shared.ActionBlocker;
++using Content.Shared.Database;
+ using Content.Shared.DeviceNetwork;
+ using Content.Shared.DeviceNetwork.Events;
+ using Content.Shared.Power;

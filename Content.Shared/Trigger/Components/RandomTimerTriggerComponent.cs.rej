@@ -1,0 +1,30 @@
+diff a/Content.Shared/Trigger/Components/RandomTimerTriggerComponent.cs b/Content.Shared/Trigger/Components/RandomTimerTriggerComponent.cs	(rejected hunks)
+@@ -1,22 +1,22 @@
+-using Content.Server.Explosion.EntitySystems;
++using Robust.Shared.GameStates;
+ 
+-namespace Content.Server.Explosion.Components;
++namespace Content.Shared.Trigger.Components;
+ 
+ /// <summary>
+-/// This is used for randomizing a <see cref="RandomTimerTriggerComponent"/> on MapInit
++/// This is used for randomizing a <see cref="TimerTriggerComponent"/> on MapInit.
+ /// </summary>
+-[RegisterComponent, Access(typeof(TriggerSystem))]
++[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+ public sealed partial class RandomTimerTriggerComponent : Component
+ {
+     /// <summary>
+     /// The minimum random trigger time.
+     /// </summary>
+-    [DataField]
++    [DataField, AutoNetworkedField]
+     public float Min;
+ 
+     /// <summary>
+     /// The maximum random trigger time.
+     /// </summary>
+-    [DataField]
++    [DataField, AutoNetworkedField]
+     public float Max;
+ }

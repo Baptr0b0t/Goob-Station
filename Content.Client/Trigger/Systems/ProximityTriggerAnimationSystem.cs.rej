@@ -1,0 +1,16 @@
+diff a/Content.Client/Trigger/Systems/ProximityTriggerAnimationSystem.cs b/Content.Client/Trigger/Systems/ProximityTriggerAnimationSystem.cs	(rejected hunks)
+@@ -1,11 +1,12 @@
+ using Content.Shared.Trigger;
++using Content.Shared.Trigger.Components.Triggers;
+ using Robust.Client.Animations;
+ using Robust.Client.GameObjects;
+ using Robust.Shared.Animations;
+ 
+-namespace Content.Client.Explosion;
++namespace Content.Client.Trigger.Systems;
+ 
+-public sealed partial class TriggerSystem
++public sealed class ProximityTriggerAnimationSystem : EntitySystem
+ {
+     [Dependency] private readonly AnimationPlayerSystem _player = default!;
+     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;

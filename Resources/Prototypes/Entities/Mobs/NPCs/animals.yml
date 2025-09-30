@@ -2585,6 +2585,7 @@
 - type: entity
   parent: [ SimpleMobBase, FlyingMobBase ]
   id: MobParrotBase
+  name: parrot
   abstract: true
   description: Infiltrates your domain, spies on you, and somehow still a cool pet.
   components:
@@ -2666,7 +2667,6 @@
     bloodMaxVolume: 50
 
 - type: entity
-  name: parrot
   parent: MobParrotBase
   id: MobParrot
   components:
@@ -2787,7 +2787,8 @@
   - type: Item
     size: Normal
     sprite: Mobs/Animals/grenadepenguin.rsi
-  - type: OnUseTimerTrigger
+  - type: TriggerOnUse
+  - type: TimerTrigger
     delay: 10
     beepSound:
       path: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg #funny sfx use
@@ -2800,6 +2801,8 @@
     intensitySlope: 20
     totalIntensity: 225
   - type: ExplodeOnTrigger
+    keysIn:
+    - timer
   - type: Destructible
     thresholds:
     - trigger:
@@ -3608,7 +3611,7 @@
     factions:
     - Syndicate
   - type: Access
-    tags: 
+    tags:
     - NuclearOperative
     - SyndicateAgent
   - type: MeleeWeapon

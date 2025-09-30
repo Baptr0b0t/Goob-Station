@@ -1,0 +1,10 @@
+diff a/Resources/Prototypes/GameRules/roundstart.yml b/Resources/Prototypes/GameRules/roundstart.yml	(rejected hunks)
+@@ -271,7 +271,7 @@
+     - WizardSurviveObjective
+     - WizardDemonstrateObjective
+   - type: LoadMapRule
+-    gridPath: /Maps/Shuttles/wizard.yml
++    mapPath: /Maps/Nonstations/wizardsden.yml
+   - type: RuleGrids
+   - type: AntagSelection
+   - type: AntagLoadProfileRule

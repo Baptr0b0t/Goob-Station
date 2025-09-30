@@ -1,0 +1,12 @@
+diff a/Content.Server/Explosion/Components/ProjectileGrenadeComponent.cs b/Content.Server/Explosion/Components/ProjectileGrenadeComponent.cs	(rejected hunks)
+@@ -45,4 +45,10 @@ public sealed partial class ProjectileGrenadeComponent : Component
+     /// </summary>
+     [DataField]
+     public float MaxVelocity = 6f;
++
++    /// <summary>
++    /// The trigger key that will activate the grenade.
++    /// </summary>
++    [DataField]
++    public string TriggerKey = "timer";
+ }

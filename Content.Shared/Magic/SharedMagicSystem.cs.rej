@@ -1,0 +1,12 @@
+diff a/Content.Shared/Magic/SharedMagicSystem.cs b/Content.Shared/Magic/SharedMagicSystem.cs	(rejected hunks)
+@@ -510,8 +510,8 @@ private void OnMindSwapSpell(MindSwapSpellEvent ev)
+             _mind.TransferTo(tarMind, ev.Performer);
+         }
+ 
+-        _stun.TryParalyze(ev.Target, ev.TargetStunDuration, true);
+-        _stun.TryParalyze(ev.Performer, ev.PerformerStunDuration, true);
++        _stun.TryUpdateParalyzeDuration(ev.Target, ev.TargetStunDuration);
++        _stun.TryUpdateParalyzeDuration(ev.Performer, ev.PerformerStunDuration);
+     }
+ 
+     #endregion

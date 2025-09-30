@@ -290,6 +290,14 @@ public partial class AtmosphereSystem
 
     public bool RemovePipeNet(Entity<GridAtmosphereComponent?> grid, PipeNet pipeNet)
     {
+        // Technically this event can be fired even on grids that don't
+        // actually have grid atmospheres.
+        if (pipeNet.Grid is not null)
+        {
+            var ev = new PipeNodeGroupRemovedEvent(grid, pipeNet.NetId);
+            RaiseLocalEvent(ref ev);
+        }
+
         return _atmosQuery.Resolve(grid, ref grid.Comp, false) && grid.Comp.PipeNets.Remove(pipeNet);
     }
 

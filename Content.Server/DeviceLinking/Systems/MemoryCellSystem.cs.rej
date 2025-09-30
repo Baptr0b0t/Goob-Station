@@ -1,0 +1,7 @@
+diff a/Content.Server/DeviceLinking/Systems/MemoryCellSystem.cs b/Content.Server/DeviceLinking/Systems/MemoryCellSystem.cs	(rejected hunks)
+@@ -1,5 +1,4 @@
+ using Content.Server.DeviceLinking.Components;
+-using Content.Server.DeviceNetwork;
+ using Content.Shared.DeviceLinking;
+ using Content.Shared.DeviceLinking.Events;
+ using Content.Shared.DeviceNetwork;

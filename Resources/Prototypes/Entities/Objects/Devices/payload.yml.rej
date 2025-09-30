@@ -1,0 +1,6 @@
+diff a/Resources/Prototypes/Entities/Objects/Devices/payload.yml b/Resources/Prototypes/Entities/Objects/Devices/payload.yml	(rejected hunks)
+@@ -94,3 +94,4 @@
+     - type: EmitSoundOnTrigger
+       sound:
+         path: "/Audio/Effects/flash_bang.ogg"
++      positional: true

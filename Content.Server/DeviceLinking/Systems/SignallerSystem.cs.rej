@@ -1,0 +1,25 @@
+diff a/Content.Server/DeviceLinking/Systems/SignallerSystem.cs b/Content.Server/DeviceLinking/Systems/SignallerSystem.cs	(rejected hunks)
+@@ -1,6 +1,5 @@
+ using Content.Server.Administration.Logs;
+ using Content.Server.DeviceLinking.Components;
+-using Content.Server.Explosion.EntitySystems;
+ using Content.Shared.Database;
+ using Content.Shared.Interaction.Events;
+ using Content.Shared.Timing;
+@@ -36,16 +33,4 @@ private void OnUseInHand(EntityUid uid, SignallerComponent component, UseInHandE
+         _link.InvokePort(uid, component.Port);
+         args.Handled = true;
+     }
+-
+-    private void OnTrigger(EntityUid uid, SignallerComponent component, TriggerEvent args)
+-    {
+-        if (!TryComp(uid, out UseDelayComponent? useDelay)
+-            // if on cooldown, do nothing
+-            // and set cooldown to prevent clocks
+-            || !_useDelay.TryResetDelay((uid, useDelay), true))
+-            return;
+-
+-        _link.InvokePort(uid, component.Port);
+-        args.Handled = true;
+-    }
+ }

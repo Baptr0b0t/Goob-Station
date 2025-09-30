@@ -1,0 +1,8 @@
+diff a/Content.Shared/Sticky/Components/StickyComponent.cs b/Content.Shared/Sticky/Components/StickyComponent.cs	(rejected hunks)
+@@ -1,5 +1,5 @@
+ ﻿using Content.Shared.Sticky.Systems;
+-﻿using Content.Shared.Whitelist;
++using Content.Shared.Whitelist;
+ using Robust.Shared.GameStates;
+ using Robust.Shared.Utility;
+ 

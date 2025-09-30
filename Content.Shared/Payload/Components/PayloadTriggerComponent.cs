@@ -55,7 +55,7 @@ namespace Content.Shared.Payload.Components;
 /// <remarks>
 ///     This component performs two functions. Firstly, it will add or remove other components to some entity when this
 ///     item is installed inside of it. This is intended for use with constructible grenades. For example, this allows
-///     you to add things like <see cref="OnUseTimerTriggerComponent"/>, or <see cref="TriggerOnProximityComponent"/>.
+///     you to add things like <see cref="TimerTriggerComponent"/>, or <see cref="TriggerOnProximityComponent"/>.
 ///     This is required because otherwise you would have to forward arbitrary interaction directed at the casing
 ///     through to the trigger, which would be quite complicated. Also proximity triggers don't really work inside of
 ///     containers.
@@ -74,7 +74,7 @@ public sealed partial class PayloadTriggerComponent : Component
     /// <summary>
     ///     List of components to add or remove from an entity when this trigger is (un)installed.
     /// </summary>
-    [DataField("components", serverOnly:true, readOnly: true)]
+    [DataField(serverOnly: true, readOnly: true)]
     public ComponentRegistry? Components = null;
 
     /// <summary>

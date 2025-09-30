@@ -1,0 +1,6 @@
+diff a/Content.Client/UserInterface/Systems/ProgressColorSystem.cs b/Content.Client/UserInterface/Systems/ProgressColorSystem.cs	(rejected hunks)
+@@ -1,3 +1,4 @@
++using System.Numerics;
+ using Content.Shared.CCVar;
+ using Robust.Shared.Configuration;
+ 

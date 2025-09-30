@@ -120,7 +120,6 @@
     - state: active
   - type: StatusEffects
     allowed:
-    - Stun
     - Corporeal
   - type: Damageable
     damageContainer: ManifestedSpirit

@@ -1,0 +1,9 @@
+diff a/Resources/Prototypes/Entities/Clothing/Head/hardsuit-helmets.yml b/Resources/Prototypes/Entities/Clothing/Head/hardsuit-helmets.yml	(rejected hunks)
+@@ -162,6 +196,7 @@
+     - CorgiWearable
+     - WhitelistChameleon
+ 
++#Goliath Hardsuit
+ - type: entity
+   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+   id: ClothingHeadHelmetHardsuitGoliath

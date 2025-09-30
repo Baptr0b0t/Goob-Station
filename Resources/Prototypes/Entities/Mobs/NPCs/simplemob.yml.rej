@@ -1,0 +1,18 @@
+diff a/Resources/Prototypes/Entities/Mobs/NPCs/simplemob.yml b/Resources/Prototypes/Entities/Mobs/NPCs/simplemob.yml	(rejected hunks)
+@@ -32,6 +31,7 @@
+   - type: Tag
+     tags:
+     - DoorBumpOpener
++    - StunImmune
+ 
+ - type: entity
+   abstract: true
+@@ -93,8 +93,6 @@
+     baseDecayRate: 0.04
+   - type: StatusEffects
+     allowed:
+-    - Stun
+-    - SlowedDown
+     - Stutter
+     - Electrocution
+     - TemporaryBlindness

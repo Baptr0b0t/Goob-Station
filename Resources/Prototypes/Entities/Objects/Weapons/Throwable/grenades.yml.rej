@@ -1,0 +1,51 @@
+diff a/Resources/Prototypes/Entities/Objects/Weapons/Throwable/grenades.yml b/Resources/Prototypes/Entities/Objects/Weapons/Throwable/grenades.yml	(rejected hunks)
+@@ -188,7 +206,7 @@
+   components:
+   - type: Sprite
+     sprite: Objects/Weapons/Grenades/singularitygrenade.rsi
+-  - type: OnUseTimerTrigger
++  - type: TimerTrigger
+     delay: 3
+     beepInterval: 0.46
+     beepSound:
+@@ -200,14 +218,20 @@
+       path: /Audio/Effects/Grenades/Supermatter/smbeep.ogg
+       params:
+         volume: -5
+-  - type: SoundOnTrigger
+-    removeOnTrigger: true
++  - type: EmitSoundOnTrigger
++    keysIn:
++    - timer
+     sound:
+       path: /Audio/Effects/Grenades/Supermatter/supermatter_start.ogg
+-      volume: 5
++      params:
++        volume: 5
+   - type: AnchorOnTrigger
++    keysIn:
++    - timer
+     removeOnTrigger: true
+   - type: TwoStageTrigger
++    keysIn:
++    - timer
+     triggerDelay: 10.45
+     components:
+       - type: AmbientSound
+@@ -395,13 +441,15 @@
+   - type: Sprite
+     sprite: Objects/Weapons/Grenades/holyhandgrenade.rsi
+   - type: ExplodeOnTrigger
++    keysIn:
++    - timer
+   - type: Explosive
+     explosionType: Default # same as macrobomb
+     totalIntensity: 3500
+     intensitySlope: 15
+     maxIntensity: 70
+     canCreateVacuum: true
+-  - type: OnUseTimerTrigger
++  - type: TimerTrigger
+     delay: 3 # by canon
+   - type: PointLight
+     radius: 7

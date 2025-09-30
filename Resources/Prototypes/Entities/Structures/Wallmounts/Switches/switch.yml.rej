@@ -1,0 +1,23 @@
+diff a/Resources/Prototypes/Entities/Structures/Wallmounts/Switches/switch.yml b/Resources/Prototypes/Entities/Structures/Wallmounts/Switches/switch.yml	(rejected hunks)
+@@ -1,19 +1,12 @@
+ - type: entity
++  parent: BaseWallmountMetallic
+   id: SignalSwitch
+   name: signal switch
+   description: It's a switch for toggling power to things.
+-  placement:
+-    mode: SnapgridCenter
+-    snap:
+-    - Wallmount
+   components:
+-  - type: StationAiWhitelist
+   - type: WallMount
+     arc: 360
+-  - type: Clickable
+-  - type: InteractionOutline
+-  - type: Physics
+-    canCollide: false
++  - type: StationAiWhitelist
+   - type: Sprite
+     drawdepth: SmallObjects
+     sprite: Structures/Wallmounts/switch.rsi

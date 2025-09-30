@@ -234,6 +234,6 @@
   components:
     - type: Defusable
       disposable: true
-    - type: OnUseTimerTrigger
+    - type: TimerTrigger
       delay: 10
       delayOptions: [10, 20, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300]

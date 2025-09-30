@@ -1,0 +1,9 @@
+diff a/Resources/Prototypes/Entities/Clothing/Belt/belts.yml b/Resources/Prototypes/Entities/Clothing/Belt/belts.yml	(rejected hunks)
+@@ -234,6 +234,7 @@
+         - WetFloorSign
+         - HolosignProjector
+         - Plunger
++        - GoldenPlunger
+         - WireBrush
+       components:
+         - LightReplacer

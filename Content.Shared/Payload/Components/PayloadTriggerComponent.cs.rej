@@ -1,0 +1,16 @@
+diff a/Content.Shared/Payload/Components/PayloadTriggerComponent.cs b/Content.Shared/Payload/Components/PayloadTriggerComponent.cs	(rejected hunks)
+@@ -1,4 +1,5 @@
+-using Content.Shared.Explosion.Components;
++using Content.Shared.Trigger.Components;
++using Content.Shared.Trigger.Components.Triggers;
+ using Robust.Shared.GameStates;
+ using Robust.Shared.Prototypes;
+ 
+@@ -41,6 +42,6 @@ public sealed partial class PayloadTriggerComponent : Component
+     ///     when removing the component, to ensure that removal of this trigger only removes the components that it was
+     ///     responsible for adding.
+     /// </remarks>
+-    [DataField("grantedComponents", serverOnly: true)]
++    [DataField(serverOnly: true)]
+     public HashSet<Type> GrantedComponents = new();
+ }

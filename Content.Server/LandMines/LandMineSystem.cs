@@ -39,15 +39,15 @@ public sealed class LandMineSystem : EntitySystem
     /// </summary>
     private void HandleStepOnTriggered(EntityUid uid, LandMineComponent component, ref StepTriggeredOnEvent args)
     {
-      if (!string.IsNullOrEmpty(component.TriggerText))
-      {
-          _popupSystem.PopupCoordinates(
-              Loc.GetString(component.TriggerText, ("mine", uid)),
-              Transform(uid).Coordinates,
-              args.Tripper,
-              PopupType.LargeCaution);
-      }
-      _audioSystem.PlayPvs(component.Sound, uid);
+        if (!string.IsNullOrEmpty(component.TriggerText))
+        {
+            _popupSystem.PopupCoordinates(
+                Loc.GetString(component.TriggerText, ("mine", uid)),
+                Transform(uid).Coordinates,
+                args.Tripper,
+                PopupType.LargeCaution);
+        }
+        _audioSystem.PlayPvs(component.Sound, uid);
     }
 
     /// <summary>
@@ -55,7 +55,8 @@ public sealed class LandMineSystem : EntitySystem
     /// </summary>
     private void HandleStepOffTriggered(EntityUid uid, LandMineComponent component, ref StepTriggeredOffEvent args)
     {
-        _trigger.Trigger(uid, args.Tripper);
+        // TODO: Adjust to the new trigger system
+        _trigger.Trigger(uid, args.Tripper, TriggerSystem.DefaultTriggerKey);
     }
 
     /// <summary>

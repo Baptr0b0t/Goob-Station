@@ -1,0 +1,60 @@
+diff a/Content.Shared/Trigger/Systems/TriggerOnMobstateChangeSystem.cs b/Content.Shared/Trigger/Systems/TriggerOnMobstateChangeSystem.cs	(rejected hunks)
+@@ -1,20 +1,25 @@
+-﻿using Content.Server.Explosion.Components;
+-using Content.Shared.Explosion.Components;
+-using Content.Shared.Implants;
++﻿using Content.Shared.Implants;
+ using Content.Shared.Interaction.Events;
+ using Content.Shared.Mobs;
++using Content.Shared.Popups;
++using Content.Shared.Trigger.Components.Triggers;
+ 
+-namespace Content.Server.Explosion.EntitySystems;
++namespace Content.Shared.Trigger.Systems;
+ 
+-public sealed partial class TriggerSystem
++public sealed partial class TriggerOnMobstateChangeSystem : EntitySystem
+ {
+-    private void InitializeMobstate()
++    [Dependency] private readonly TriggerSystem _trigger = default!;
++    [Dependency] private readonly SharedPopupSystem _popup = default!;
++
++    public override void Initialize()
+     {
++        base.Initialize();
++
+         SubscribeLocalEvent<TriggerOnMobstateChangeComponent, MobStateChangedEvent>(OnMobStateChanged);
+         SubscribeLocalEvent<TriggerOnMobstateChangeComponent, SuicideEvent>(OnSuicide);
+ 
+-        SubscribeLocalEvent<TriggerOnMobstateChangeComponent, ImplantRelayEvent<SuicideEvent>>(OnSuicideRelay);
+         SubscribeLocalEvent<TriggerOnMobstateChangeComponent, ImplantRelayEvent<MobStateChangedEvent>>(OnMobStateRelay);
++        SubscribeLocalEvent<TriggerOnMobstateChangeComponent, ImplantRelayEvent<SuicideEvent>>(OnSuicideRelay);
+     }
+ 
+     private void OnMobStateChanged(EntityUid uid, TriggerOnMobstateChangeComponent component, MobStateChangedEvent args)
+@@ -50,17 +51,19 @@ private void OnSuicide(EntityUid uid, TriggerOnMobstateChangeComponent component
+         if (!component.PreventSuicide)
+             return;
+ 
+-        _popupSystem.PopupEntity(Loc.GetString("suicide-prevented"), args.Victim, args.Victim);
++        _popup.PopupClient(Loc.GetString("suicide-prevented"), args.Victim);
+         args.Handled = true;
+     }
+ 
+     private void OnSuicideRelay(EntityUid uid, TriggerOnMobstateChangeComponent component, ImplantRelayEvent<SuicideEvent> args)
+     {
+-        OnSuicide(uid, component, args.Event);
+-    }
++        if (args.Event.Handled)
++            return;
+ 
+-    private void OnMobStateRelay(EntityUid uid, TriggerOnMobstateChangeComponent component, ImplantRelayEvent<MobStateChangedEvent> args)
+-    {
+-        OnMobStateChanged(uid, component, args.Event);
++        if (!component.PreventSuicide)
++            return;
++
++        _popup.PopupClient(Loc.GetString("suicide-prevented"), args.Event.Victim);
++        args.Event.Handled = true;
+     }
+ }

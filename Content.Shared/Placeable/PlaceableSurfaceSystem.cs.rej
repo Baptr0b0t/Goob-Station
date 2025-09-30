@@ -1,0 +1,27 @@
+diff a/Content.Shared/Placeable/PlaceableSurfaceSystem.cs b/Content.Shared/Placeable/PlaceableSurfaceSystem.cs	(rejected hunks)
+@@ -87,4 +91,25 @@ private void OnStorageAfterClose(Entity<PlaceableSurfaceComponent> ent, ref Stor
+     {
+         SetPlaceable(ent.Owner, false, ent.Comp);
+     }
++
++    private void OnGetDumpableVerb(Entity<PlaceableSurfaceComponent> ent, ref GetDumpableVerbEvent args)
++    {
++        args.Verb = Loc.GetString("dump-placeable-verb-name", ("surface", ent));
++    }
++
++    private void OnDump(Entity<PlaceableSurfaceComponent> ent, ref DumpEvent args)
++    {
++        if (args.Handled)
++            return;
++
++        args.Handled = true;
++        args.PlaySound = true;
++
++        var (targetPos, targetRot) = _transformSystem.GetWorldPositionRotation(ent);
++
++        foreach (var entity in args.DumpQueue)
++        {
++            _transformSystem.SetWorldPositionRotation(entity, targetPos + _random.NextVector2Box() / 4, targetRot);
++        }
++    }
+ }

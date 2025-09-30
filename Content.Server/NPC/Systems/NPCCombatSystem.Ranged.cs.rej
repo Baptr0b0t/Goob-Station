@@ -1,0 +1,10 @@
+diff a/Content.Server/NPC/Systems/NPCCombatSystem.Ranged.cs b/Content.Server/NPC/Systems/NPCCombatSystem.Ranged.cs	(rejected hunks)
+@@ -205,7 +205,7 @@ private void UpdateRanged(float frameTime)
+                 return;
+             }
+ 
+-            _gun.AttemptShoot(uid, gunUid, gun, targetCordinates);
++            _gun.AttemptShoot(uid, gunUid, gun, targetCordinates, comp.Target);
+         }
+     }
+ }

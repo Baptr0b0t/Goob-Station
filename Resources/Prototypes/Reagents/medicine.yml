@@ -1493,12 +1493,13 @@
   color: "#8147ff"
   metabolisms:
     Medicine:
+      metabolismRate: 0.1
       effects:
       # heals shocks and removes shock chems
       - !type:HealthChange
         damage:
           types:
-            Shock: -4
+            Shock: -0.5 # 5 per u
       - !type:AdjustReagent
         reagent: Licoxide
         amount: -4

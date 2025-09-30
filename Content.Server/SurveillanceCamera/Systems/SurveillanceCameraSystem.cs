@@ -70,6 +70,8 @@ public sealed class SurveillanceCameraSystem : EntitySystem
     [Dependency] private readonly DeviceNetworkSystem _deviceNetworkSystem = default!;
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+
 
     // Pings a surveillance camera subnet. All cameras will always respond
     // with a data message if they are on the same subnet.
@@ -228,6 +230,7 @@ public sealed class SurveillanceCameraSystem : EntitySystem
         component.CameraId = args.Name;
         component.NameSet = true;
         UpdateSetupInterface(uid, component);
+        _adminLogger.Add(LogType.Chat, LogImpact.Low, $"{ToPrettyString(args.Actor)} set the name of {ToPrettyString(uid)} to \"{args.Name}.\"");
     }
 
     private void OnSetNetwork(EntityUid uid, SurveillanceCameraComponent component,

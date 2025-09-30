@@ -21,11 +21,13 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Storage;
 using Content.Shared.Storage.Components;
+using Robust.Shared.Random;
 
 namespace Content.Shared.Placeable;
 
 public sealed class PlaceableSurfaceSystem : EntitySystem
 {
+    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
@@ -37,6 +39,8 @@ public sealed class PlaceableSurfaceSystem : EntitySystem
         SubscribeLocalEvent<PlaceableSurfaceComponent, StorageInteractUsingAttemptEvent>(OnStorageInteractUsingAttempt);
         SubscribeLocalEvent<PlaceableSurfaceComponent, StorageAfterOpenEvent>(OnStorageAfterOpen);
         SubscribeLocalEvent<PlaceableSurfaceComponent, StorageAfterCloseEvent>(OnStorageAfterClose);
+        SubscribeLocalEvent<PlaceableSurfaceComponent, GetDumpableVerbEvent>(OnGetDumpableVerb);
+        SubscribeLocalEvent<PlaceableSurfaceComponent, DumpEvent>(OnDump);
     }
 
     public void SetPlaceable(EntityUid uid, bool isPlaceable, PlaceableSurfaceComponent? surface = null)

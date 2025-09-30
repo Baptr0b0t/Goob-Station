@@ -1,0 +1,10 @@
+diff a/Content.Shared/Weapons/Ranged/Systems/SharedGunSystem.cs b/Content.Shared/Weapons/Ranged/Systems/SharedGunSystem.cs	(rejected hunks)
+@@ -340,7 +341,7 @@ private void AttemptShoot(EntityUid user, EntityUid gunUid, GunComponent gun)
+         if (ev.Ammo.Count <= 0)
+         {
+             // triggers effects on the gun if it's empty
+-            var emptyGunShotEvent = new OnEmptyGunShotEvent();
++            var emptyGunShotEvent = new OnEmptyGunShotEvent(user);
+             RaiseLocalEvent(gunUid, ref emptyGunShotEvent);
+ 
+             gun.BurstActivated = false;

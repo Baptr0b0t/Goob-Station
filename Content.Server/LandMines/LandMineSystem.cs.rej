@@ -1,0 +1,12 @@
+diff a/Content.Server/LandMines/LandMineSystem.cs b/Content.Server/LandMines/LandMineSystem.cs	(rejected hunks)
+@@ -1,9 +1,9 @@
+-using Content.Server.Explosion.EntitySystems;
+ using Content.Shared.Armable;
+ using Content.Shared.Item.ItemToggle.Components;
+ using Content.Shared.LandMines;
+ using Content.Shared.Popups;
+ using Content.Shared.StepTrigger.Systems;
++using Content.Shared.Trigger.Systems;
+ using Robust.Shared.Audio.Systems;
+ 
+ namespace Content.Server.LandMines;

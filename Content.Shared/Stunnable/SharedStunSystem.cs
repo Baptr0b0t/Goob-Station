@@ -159,10 +159,6 @@ public abstract partial class SharedStunSystem : EntitySystem
 
     private void OnMobStateChanged(EntityUid uid, MobStateComponent component, MobStateChangedEvent args)
     {
-        if (!TryComp<StatusEffectsComponent>(uid, out var status))
-        {
-            return;
-        }
         switch (args.NewMobState)
         {
             case MobState.Alive:
@@ -171,12 +167,12 @@ public abstract partial class SharedStunSystem : EntitySystem
                 }
             case MobState.Critical:
                 {
-                    _statusEffect.TryRemoveStatusEffect(uid, "Stun");
+                    _status.TryRemoveStatusEffect(uid, StunId);
                     break;
                 }
             case MobState.Dead:
                 {
-                    _statusEffect.TryRemoveStatusEffect(uid, "Stun");
+                    _status.TryRemoveStatusEffect(uid, StunId);
                     break;
                 }
             case MobState.Invalid:

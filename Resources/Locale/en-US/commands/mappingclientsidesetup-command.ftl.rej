@@ -1,0 +1,6 @@
+diff a/Resources/Locale/en-US/commands/mappingclientsidesetup-command.ftl b/Resources/Locale/en-US/commands/mappingclientsidesetup-command.ftl	(rejected hunks)
+@@ -1,2 +1,2 @@
+ cmd-mappingclientsidesetup-desc = Sets up the lighting control and such settings client-side. Sent by 'mapping' to client.
+-cmd-mappingclientsidesetup-help = Usage: {$command}
+\ No newline at end of file
++cmd-mappingclientsidesetup-help = Usage: mappingclientsidesetup

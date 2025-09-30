@@ -1,0 +1,10 @@
+diff a/Resources/Prototypes/Entities/Mobs/Cyborgs/base_borg_chassis.yml b/Resources/Prototypes/Entities/Mobs/Cyborgs/base_borg_chassis.yml	(rejected hunks)
+@@ -143,8 +143,6 @@
+   - type: Body
+   - type: StatusEffects
+     allowed:
+-    - Stun
+-    - SlowedDown
+     - Flashed
+   - type: TypingIndicator
+     proto: robot

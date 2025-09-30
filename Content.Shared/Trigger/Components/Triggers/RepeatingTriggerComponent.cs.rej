@@ -1,0 +1,36 @@
+diff a/Content.Shared/Trigger/Components/Triggers/RepeatingTriggerComponent.cs b/Content.Shared/Trigger/Components/Triggers/RepeatingTriggerComponent.cs	(rejected hunks)
+@@ -1,25 +1,26 @@
+-using Content.Server.Explosion.EntitySystems;
++using Robust.Shared.GameStates;
+ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+ 
+-namespace Content.Server.Explosion.Components;
++namespace Content.Shared.Trigger.Components.Triggers;
+ 
+ /// <summary>
+ /// Constantly triggers after being added to an entity.
+ /// </summary>
+-[RegisterComponent, Access(typeof(TriggerSystem))]
+-[AutoGenerateComponentPause]
+-public sealed partial class RepeatingTriggerComponent : Component
++[RegisterComponent, NetworkedComponent]
++[AutoGenerateComponentState, AutoGenerateComponentPause]
++public sealed partial class RepeatingTriggerComponent : BaseTriggerOnXComponent
+ {
+     /// <summary>
+     /// How long to wait between triggers.
+     /// The first trigger starts this long after the component is added.
+     /// </summary>
+-    [DataField]
++    [DataField, AutoNetworkedField]
+     public TimeSpan Delay = TimeSpan.FromSeconds(1);
+ 
+     /// <summary>
+     /// When the next trigger will be.
+     /// </summary>
+-    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+-    public TimeSpan NextTrigger;
++    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
++    [AutoNetworkedField, AutoPausedField]
++    public TimeSpan NextTrigger = TimeSpan.Zero;
+ }

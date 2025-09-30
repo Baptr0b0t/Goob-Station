@@ -1,0 +1,24 @@
+diff a/Content.Server/Defusable/Systems/DefusableSystem.cs b/Content.Server/Defusable/Systems/DefusableSystem.cs	(rejected hunks)
+@@ -1,5 +1,4 @@
+ using Content.Server.Defusable.Components;
+-using Content.Server.Explosion.Components;
+ using Content.Server.Explosion.EntitySystems;
+ using Content.Server.Popups;
+ using Content.Server.Wires;
+@@ -8,13 +7,13 @@
+ using Content.Shared.Database;
+ using Content.Shared.Defusable;
+ using Content.Shared.Examine;
+-using Content.Shared.Explosion.Components;
+-using Content.Shared.Explosion.Components.OnTrigger;
+ using Content.Shared.Popups;
++using Content.Shared.Trigger.Components;
++using Content.Shared.Trigger.Components.Effects;
++using Content.Shared.Trigger.Systems;
+ using Content.Shared.Verbs;
+ using Content.Shared.Wires;
+ using Robust.Server.GameObjects;
+-using Robust.Shared.Audio;
+ using Robust.Shared.Audio.Systems;
+ 
+ namespace Content.Server.Defusable.Systems;

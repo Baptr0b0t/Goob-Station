@@ -1,0 +1,10 @@
+diff a/Resources/Prototypes/Entities/Mobs/NPCs/elemental.yml b/Resources/Prototypes/Entities/Mobs/NPCs/elemental.yml	(rejected hunks)
+@@ -35,8 +35,6 @@
+     bodyType: KinematicController # Same for all inheritors
+   - type: StatusEffects
+     allowed:
+-    - Stun
+-    - SlowedDown
+     - Stutter
+     - Electrocution
+   - type: Pullable

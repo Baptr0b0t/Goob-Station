@@ -26,6 +26,7 @@ namespace Content.Server.Stunnable
     internal sealed class StunOnCollideSystem : EntitySystem
     {
         [Dependency] private readonly StunSystem _stunSystem = default!;
+        [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
 
         public override void Initialize()
         {

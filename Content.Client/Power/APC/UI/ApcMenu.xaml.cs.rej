@@ -1,0 +1,9 @@
+diff a/Content.Client/Power/APC/UI/ApcMenu.xaml.cs b/Content.Client/Power/APC/UI/ApcMenu.xaml.cs	(rejected hunks)
+@@ -3,6 +3,7 @@
+ using Robust.Client.GameObjects;
+ using Robust.Shared.IoC;
+ using System;
++using System.Numerics;
+ using Content.Client.Stylesheets;
+ using Content.Shared.APC;
+ using Robust.Client.Graphics;

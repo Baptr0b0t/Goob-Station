@@ -72,8 +72,6 @@
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
   - type: Appearance
-  - type: Damageable
-    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

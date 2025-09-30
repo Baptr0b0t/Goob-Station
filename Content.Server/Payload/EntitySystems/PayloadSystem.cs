@@ -71,18 +71,22 @@ public sealed class PayloadSystem : EntitySystem
 
     private void OnCaseTriggered(EntityUid uid, PayloadCaseComponent component, TriggerEvent args)
     {
+        // TODO: Adjust to the new trigger system
+
         if (!TryComp(uid, out ContainerManagerComponent? contMan))
             return;
 
         // Pass trigger event onto all contained payloads. Payload capacity configurable by construction graphs.
         foreach (var ent in GetAllPayloads(uid, contMan))
         {
-            RaiseLocalEvent(ent, args, false);
+            RaiseLocalEvent(ent, ref args, false);
         }
     }
 
     private void OnTriggerTriggered(EntityUid uid, PayloadTriggerComponent component, TriggerEvent args)
     {
+        // TODO: Adjust to the new trigger system
+
         if (!component.Active)
             return;
 
@@ -92,7 +96,7 @@ public sealed class PayloadSystem : EntitySystem
         // Ensure we don't enter a trigger-loop
         DebugTools.Assert(!_tagSystem.HasTag(uid, PayloadTag));
 
-        RaiseLocalEvent(parent, args, false);
+        RaiseLocalEvent(parent, ref args);
     }
 
     private void OnEntityInserted(EntityUid uid, PayloadCaseComponent _, EntInsertedIntoContainerMessage args)
@@ -163,6 +167,7 @@ public sealed class PayloadSystem : EntitySystem
 
     private void HandleChemicalPayloadTrigger(Entity<ChemicalPayloadComponent> entity, ref TriggerEvent args)
     {
+        // TODO: Adjust to the new trigger system
         if (entity.Comp.BeakerSlotA.Item is not EntityUid beakerA
             || entity.Comp.BeakerSlotB.Item is not EntityUid beakerB
             || !TryComp(beakerA, out FitsInDispenserComponent? compA)

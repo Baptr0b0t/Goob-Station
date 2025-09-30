@@ -1,0 +1,8 @@
+diff a/Content.Shared/Sound/Components/BaseEmitSoundComponent.cs b/Content.Shared/Sound/Components/BaseEmitSoundComponent.cs	(rejected hunks)
+@@ -1,6 +1,4 @@
+ using Robust.Shared.Audio;
+-using Robust.Shared.GameStates;
+-using Robust.Shared.Serialization;
+ 
+ namespace Content.Shared.Sound.Components;
+ 

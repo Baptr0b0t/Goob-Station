@@ -31,3 +31,10 @@
   path: "/Textures/_Goobstation/Shaders/dodge.swsl"
   params:
     progress: 0.0
+
+- type: shader
+  id: Stoned
+  kind: source
+  path: "/Textures/_Goobstation/Shaders/texture_replace.swsl"
+  params:
+    tileScale: 4.0

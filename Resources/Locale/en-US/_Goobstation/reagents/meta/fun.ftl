@@ -57,4 +57,4 @@ reagent-name-crapotoxin = crapotoxin
 reagent-desc-crapotoxin = Causes the metabolizer to fart uncontrollably.
 
 reagent-name-vulpkaninmutationtoxin = Vulpkanin mutation toxin
-reagent-desc-vulpkaninmutationtoxin = A strange fluid that smells distinctly of wet dog. Ingesting enough of it will make you very familiar with that smell.
+reagent-desc-vulpkaninmutationtoxin = A strange mutagenic fluid. Ingesting enough of it will cause transformation into a Vulpkanin.

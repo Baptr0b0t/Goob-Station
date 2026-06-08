@@ -224,7 +224,7 @@
   group: Toxins
   desc: reagent-desc-vulpkaninmutationtoxin
   physicalDesc: reagent-physical-desc-viscous
-  flavor: musky
+  flavor: flavor-base-chuddy
   color: "#FFDE9F"
   metabolisms:
     Poison:

@@ -13,6 +13,7 @@ using Content.Shared.SSDIndicator;
 using Content.Shared.Storage.Components;
 using Content.Shared.Strip.Components;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
@@ -26,6 +27,7 @@ public sealed class ObraDinnHologramSystem : EntitySystem
 {
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
 
     public override void Initialize()
     {
@@ -58,6 +60,7 @@ public sealed class ObraDinnHologramSystem : EntitySystem
         var listenerr = EnsureComp<ActiveListenerComponent>(ent.Owner);// needed for ListenEvent
         listenerr.Range=ent.Comp.MinDistance;
 
+        DeleteCarriedItems(ent.Owner);
 
         // comps we dont want the hologram to have
         RemCompDeferred<PullableComponent>(ent);
@@ -74,6 +77,19 @@ public sealed class ObraDinnHologramSystem : EntitySystem
         RemCompDeferred<CarriableComponent>(ent);
         RemCompDeferred<HasJobIconsComponent>(ent);
         RemCompDeferred<MobStateComponent>(ent);
+    }
+
+    private void DeleteCarriedItems(EntityUid uid)
+    {
+        if (!TryComp<ContainerManagerComponent>(uid, out var containerManager))
+            return;
+
+        var contained = new List<EntityUid>();
+        foreach (var container in _container.GetAllContainers(uid, containerManager))
+            contained.AddRange(container.ContainedEntities);
+
+        foreach (var item in contained)
+            PredictedQueueDel(item);
     }
 
     private void OnShutdown(Entity<ObraDinnHologramComponent> ent, ref ComponentShutdown arg)

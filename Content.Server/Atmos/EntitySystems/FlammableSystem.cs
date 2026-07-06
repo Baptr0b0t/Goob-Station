@@ -152,6 +152,7 @@ using Content.Shared.Temperature;
 using Content.Shared.Throwing;
 using Content.Shared.Timing;
 using Content.Shared.Toggleable;
+using Content.Shared.Weapons.Hitscan.Events; // Goobstation
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Hands;
 using Content.Shared.Temperature.Components;
@@ -220,6 +221,7 @@ namespace Content.Server.Atmos.EntitySystems
             SubscribeLocalEvent<IgniteOnCollideComponent, StartCollideEvent>(IgniteOnCollide);
             SubscribeLocalEvent<IgniteOnCollideComponent, LandEvent>(OnIgniteLand);
             SubscribeLocalEvent<IgniteOnCollideComponent, ProjectileHitEvent>(OnProjectileHit); // Goobstation
+            SubscribeLocalEvent<IgniteOnCollideComponent, HitscanDamageDealtEvent>(OnHitscanHit); // Goobstation - incendiary hitscans
 
             SubscribeLocalEvent<IgniteOnMeleeHitComponent, MeleeHitEvent>(OnMeleeHit);
 
@@ -265,6 +267,22 @@ namespace Content.Server.Atmos.EntitySystems
 
             flammable.FireStacks += ent.Comp.FireStacks;
             Ignite(otherEnt, ent, flammable);
+            ent.Comp.Count--;
+
+            if (ent.Comp.Count == 0)
+                RemCompDeferred<IgniteOnCollideComponent>(ent);
+        }
+
+        // Goobstation - the new hitscan systems don't raise collide/projectile events, so ignite off the damage event.
+        private void OnHitscanHit(Entity<IgniteOnCollideComponent> ent, ref HitscanDamageDealtEvent args)
+        {
+            var target = args.Target;
+
+            if (!TryComp(target, out FlammableComponent? flammable))
+                return;
+
+            flammable.FireStacks += ent.Comp.FireStacks;
+            Ignite(target, ent, flammable);
             ent.Comp.Count--;
 
             if (ent.Comp.Count == 0)

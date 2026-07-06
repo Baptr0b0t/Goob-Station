@@ -18,6 +18,7 @@ injector-volume-transfer-label = Volume: [color=white]{$currentVolume}/{$totalVo
 injector-volume-label = Volume: [color=white]{$currentVolume}/{$totalVolume}u[/color]
     Mode: [color=white]{$modeString}[/color]
 injector-toggle-verb-text = Toggle Injector Mode
+injector-invalid-injector-toggle-mode = Invalid
 
 ## Entity
 

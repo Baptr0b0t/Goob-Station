@@ -93,6 +93,7 @@ public sealed partial class CryoPodSystem : SharedCryoPodSystem
     [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private readonly Content.Server.Body.Systems.BloodstreamSystem _bloodstreamSystem = default!; // Goobstation
     [Dependency] private readonly SleepingSystem _sleepingSystem = default!; // Shitmed change
 
     public override void Initialize()
@@ -124,9 +125,9 @@ public sealed partial class CryoPodSystem : SharedCryoPodSystem
             HealthAnalyzerUiKey.Key,
             new HealthAnalyzerScannedUserMessage(GetNetEntity(entity.Comp.BodyContainer.ContainedEntity),
             temp?.CurrentTemperature ?? 0,
-            (bloodstream != null && _solutionContainerSystem.ResolveSolution(entity.Comp.BodyContainer.ContainedEntity.Value,
-                bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var bloodSolution))
-                ? bloodSolution.FillFraction
+            // Goobstation - FillFraction reads 50% at full health since MaxVolume is reference * MaxVolumeModifier.
+            bloodstream != null
+                ? Math.Min(1f, _bloodstreamSystem.GetBloodLevel((entity.Comp.BodyContainer.ContainedEntity.Value, bloodstream)))
                 : 0,
             null,
             null,

@@ -392,9 +392,9 @@ public sealed class HealthAnalyzerSystem : EntitySystem
 
         if (TryComp<BloodstreamComponent>(target, out var bloodstream) &&
             _solutionContainerSystem.ResolveSolution(target, bloodstream.BloodSolutionName,
-                ref bloodstream.BloodSolution, out var bloodSolution))
+                ref bloodstream.BloodSolution, out _))
         {
-            bloodAmount = bloodSolution.FillFraction;
+            bloodAmount = Math.Min(1f, _bloodstreamSystem.GetBloodLevel((target, bloodstream)));
             bloodLow = bloodAmount < bloodstream.BloodlossThreshold; // Goobstation
         }
 

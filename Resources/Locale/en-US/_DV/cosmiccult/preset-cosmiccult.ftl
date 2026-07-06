@@ -175,6 +175,9 @@ objective-condition-victory-desc = Beckon The Unknown, and herald the final curt
 
 cosmiccult-radio-tier1-progress = The Monument is beckoned unto the station...
 
+cosmiccult-announce-tier2-progress = An unnerving numbness prickles your senses.
+cosmiccult-announce-tier2-warning = Scanners detect a notable increase in Λ-CDM! Rifts in realspace may appear shortly. Please alert your station's chaplain if sighted.
+
 cosmiccult-announce-tier3-progress = An unnerving numbness prickles your senses.
 cosmiccult-announce-tier3-warning = Scanners detect an abnormal increase in Λ-CDM! Report any unnatural phenomena to security or epistemics.
 

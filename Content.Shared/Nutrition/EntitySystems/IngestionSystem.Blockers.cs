@@ -138,6 +138,9 @@ public sealed partial class IngestionSystem
         if (ent.Comp.RequireDead && _mobState.IsAlive(ent))
             return;
 
+        if (_tag.HasTag(ent, UnedibleTag)) // Goobstation
+            return;
+
         args.AddDigestible(ent.Comp.RequiresSpecialDigestion);
     }
 

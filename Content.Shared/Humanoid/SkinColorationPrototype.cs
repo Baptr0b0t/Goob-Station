@@ -242,6 +242,66 @@ public sealed partial class ClampedHsvColoration : ISkinColorationStrategy
 }
 
 /// <summary>
+/// Goobstation
+/// </summary>
+[DataDefinition]
+[Serializable, NetSerializable]
+public sealed partial class ProportionalHsvColoration : ISkinColorationStrategy
+{
+    /// <summary>
+    /// The (min, max) of the hue channel.
+    /// </summary>
+    [DataField]
+    public (float, float)? Hue;
+
+    /// <summary>
+    /// The (min, max) of the saturation channel.
+    /// </summary>
+    [DataField]
+    public (float, float)? Saturation;
+
+    /// <summary>
+    /// The (min, max) of the value channel.
+    /// </summary>
+    [DataField]
+    public (float, float)? Value;
+
+    public SkinColorationStrategyInput InputType => SkinColorationStrategyInput.Color;
+
+    public bool VerifySkinColor(Color color)
+    {
+        var hsv = Color.ToHsv(color);
+
+        if (Hue is (var minHue, var maxHue) && (hsv.X < minHue || hsv.X > maxHue))
+            return false;
+
+        if (Saturation is (var minSaturation, var maxSaturation) && (hsv.Y < minSaturation || hsv.Y > maxSaturation))
+            return false;
+
+        if (Value is (var minValue, var maxValue) && (hsv.Z < minValue || hsv.Z > maxValue))
+            return false;
+
+        return true;
+    }
+
+    public Color ClosestSkinColor(Color color)
+    {
+        var hsv = Color.ToHsv(color);
+
+        if (Hue is (var minHue, var maxHue))
+            hsv.X = hsv.X * (maxHue - minHue) + minHue;
+
+        if (Saturation is (var minSaturation, var maxSaturation))
+            hsv.Y = hsv.Y * (maxSaturation - minSaturation) + minSaturation;
+
+        if (Value is (var minValue, var maxValue))
+            hsv.Z = hsv.Z * (maxValue - minValue) + minValue;
+
+        return Color.FromHsv(hsv);
+    }
+}
+
+/// <summary>
 /// Unary coloration strategy that clamps the color within the HSL colorspace
 /// </summary>
 [DataDefinition]

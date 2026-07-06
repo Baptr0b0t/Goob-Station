@@ -15,6 +15,11 @@
   - type: Crayon
     selectedState: heart
     color: '#a70000'
+    deleteEmpty: false
+  - type: LimitedCharges
+    maxCharges: 30
+  - type: AutoRecharge
+    rechargeDuration: 1
   - type: BloodCrayon
     wpConsume: -5
   - type: Tag

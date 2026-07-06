@@ -10,6 +10,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Rounding;
+using Content.Shared._Goobstation.Wizard.Spellblade; // Goobstation
 using Content.Shared.Temperature;
 using Content.Shared.Temperature.Components;
 using Robust.Shared.Prototypes;
@@ -106,7 +107,7 @@ public sealed partial class TemperatureSystem
         var heatDamageThreshold = entity.Comp.ParentHeatDamageThreshold ?? entity.Comp.HeatDamageThreshold;
         var coldDamageThreshold = entity.Comp.ParentColdDamageThreshold ?? entity.Comp.ColdDamageThreshold;
 
-        if (temperature.CurrentTemperature >= heatDamageThreshold)
+        if (temperature.CurrentTemperature >= heatDamageThreshold && !_spellblade.IsHoldingItemWithComponent<FireSpellbladeEnchantmentComponent>(entity.Owner)) // Goob edit
         {
             if (!entity.Comp.TakingDamage)
             {

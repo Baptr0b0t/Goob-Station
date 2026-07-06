@@ -25,7 +25,7 @@
 
 - type: skinColoration
   id: AnimalFur # Okay fuck off I'm just porting the old values here but these are borderline uncapped so if you're here to change them then yeah, please do.
-  strategy: !type:ClampedHsvColoration
+  strategy: !type:ProportionalHsvColoration # Goob - proportional remap like the old ProportionalAnimalFurColor, a hard clamp collapses most of the picker onto the range edges
     hue: [ 0.056, 0.125 ]
     saturation: [ 0, 1.0 ]
     value: [ 0, 1 ]

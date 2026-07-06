@@ -18,6 +18,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Popups;
+using Content.Shared.Tag; // Goobstation
 using Content.Shared.Tools.EntitySystems;
 using Content.Shared.UserInterface;
 using Content.Shared.Verbs;
@@ -56,11 +57,14 @@ public sealed partial class IngestionSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly TagSystem _tag = default!; // Goobstation
 
     // Body Component Dependencies
     [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly ReactiveSystem _reaction = default!;
     [Dependency] private readonly StomachSystem _stomach = default!;
+
+    private static readonly ProtoId<TagPrototype> UnedibleTag = "Unedible"; // Goobstaion
 
     /// <inheritdoc/>
     public override void Initialize()

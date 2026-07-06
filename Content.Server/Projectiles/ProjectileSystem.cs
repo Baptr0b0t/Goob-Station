@@ -158,6 +158,15 @@ public sealed class ProjectileSystem : SharedProjectileSystem
         {
             component.ProjectileSpent = true;
         }
+
+        // Goobstation start
+        if (component.Penetrate)
+        {
+            component.IgnoredEntities.Add(target);
+            component.ProjectileSpent = false; // Hardlight bow should be able to deal damage while piercing, no?
+        }
+        // Goobstation end
+
         if (!deleted)
         {
             _guns.PlayImpactSound(target, modifiedDamage, component.SoundHit, component.ForceSound);
@@ -217,9 +226,7 @@ public sealed class ProjectileSystem : SharedProjectileSystem
             // Goobstation - Here penetration threshold count as "penetration health".
             // If it's lower than damage than penetation damage entity cause it deletes projectile
             if (projectile.Comp.PenetrationThreshold < penetratable.PenetrateDamage)
-            {
-                projectile.Comp.ProjectileSpent = true;
-            }
+                return false;
 
             projectile.Comp.PenetrationThreshold -= FixedPoint2.New(penetratable.PenetrateDamage);
             projectile.Comp.Damage *= (1 - penetratable.DamagePenaltyModifier);

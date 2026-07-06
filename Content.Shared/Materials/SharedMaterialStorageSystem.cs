@@ -289,6 +289,14 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
 
         existing += localChange;
 
+        if (existing == 0)
+            component.Storage.Remove(materialId);
+        else
+            component.Storage[materialId] = existing;
+
+        var ev = new MaterialAmountChangedEvent();
+        RaiseLocalEvent(uid, ref ev);
+
         if (dirty)
             Dirty(uid, component);
         return true;

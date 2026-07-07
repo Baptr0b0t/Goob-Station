@@ -132,8 +132,10 @@ public abstract partial class SharedDiseaseSystem : EntitySystem
 
         if (!args.Ent.Comp.EffectImmune)
         {
-            foreach (var effectUid in ent.Comp.Effects.ContainedEntities)
+            // not using foreach in case the collection gets modified by event handlers
+            for (var i = 0; i < ent.Comp.Effects.Count; i++)
             {
+                var effectUid = ent.Comp.Effects.ContainedEntities[i];
                 if (!EffectQuery.TryComp(effectUid, out var effect))
                     continue;
 
@@ -205,6 +207,18 @@ public abstract partial class SharedDiseaseSystem : EntitySystem
             return;
 
         ent.Comp.ImmunityProgress = Math.Clamp(ent.Comp.ImmunityProgress + amount, 0f, 1f);
+        Dirty(ent);
+    }
+
+    /// <summary>
+    /// Sets the infection rate of the given disease. Used to (de)activate dormant diseases.
+    /// </summary>
+    public void SetInfectionRate(Entity<DiseaseComponent?> ent, float amount)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return;
+
+        ent.Comp.InfectionRate = amount;
         Dirty(ent);
     }
 

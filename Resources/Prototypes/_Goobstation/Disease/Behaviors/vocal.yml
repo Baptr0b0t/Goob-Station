@@ -1,0 +1,48 @@
+# Vocal cord parasites - inspired by Metal Gear Solid V: The Phantom Pain.
+# Simplified port from Trauma-Station (dropped Shitmed-only organ-relay/targeted-part effects).
+
+- type: entity
+  parent: DiseaseBehaviorCough
+  id: DiseaseBehaviorVocalCough
+  name: Intense Cough
+  components:
+  - type: DiseaseEffect
+    complexity: 8
+  - type: DiseasePeriodicCondition
+    delayMin: 2
+    delayMax: 10
+  - type: DiseaseProgressCondition
+    minProgress: 0.2 # never cough while dormant
+    maxProgress: 0.9 # lungs no worky past this
+
+- type: entity
+  parent: DiseaseBehaviorBase
+  id: DiseaseBehaviorVocalDestroyLungs
+  name: Lung Rupture
+  description: Parasites feed on the alveoli, destroying the lungs.
+  components:
+  - type: DiseaseEffect
+    complexity: 16
+  - type: DiseasePeriodicCondition # random death time
+    delayMin: 1
+    delayMax: 8
+  - type: DiseaseProgressCondition
+    minProgress: 0.99
+  - type: DiseaseSpreadEffect # final spread burst
+    arc: 360
+    range: 4
+    spreadParams:
+      power: 1
+      chance: 1
+      spreadType: Aerial
+  - type: DiseaseReagentEffect # kill the host
+    severityScale: false
+    timeScale: false
+    progressScale: false
+    effects:
+    - !type:HealthChange
+      damage:
+        types:
+          Asphyxiation: 200
+          Blunt: 100
+  - type: DiseaseRemoveEffect # spread is done and lungs are gone: burn out so a revived host isn't instantly re-killed

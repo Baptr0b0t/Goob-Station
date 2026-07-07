@@ -47,3 +47,9 @@ reagent-effect-guidebook-disease-progress-change =
     } progress of {$type} diseases by {NATURALFIXED($amount, 5)}
 
 reagent-effect-guidebook-disease-mutate = Mutates diseases by {NATURALFIXED($amount, 4)}
+
+entity-effect-guidebook-infect-disease =
+    { $chance ->
+        [1] infects
+        *[other] infect
+    } the target with {$disease}

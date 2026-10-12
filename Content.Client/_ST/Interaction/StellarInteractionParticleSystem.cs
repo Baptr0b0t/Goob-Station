@@ -4,6 +4,7 @@
 
 using System.Numerics;
 using Content.Goobstation.Common.CCVar;
+using Content.Goobstation.Shared.Interaction;
 using Content.Shared._ST.Interaction;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
@@ -169,13 +170,18 @@ public sealed partial class StellarInteractionParticleSystem : EntitySystem
             _xform.SetParent(particle, performer);
         }
 
-        if (used is { } usedEntity && Exists(usedEntity) && TryComp<SpriteComponent>(usedEntity, out var usedSprite))
+        if (used is { } usedEntity && Exists(usedEntity) && TryComp<SpriteComponent>(usedEntity, out var usedSprite)
+            && !HasComp<HideInteractionParticleSpriteComponent>(usedEntity)) // Goobstation
         {
             // Force appearance update in case we changed the appearance after spawning.
             _appearance.OnChangeData(usedEntity, usedSprite);
 
             _sprite.CopySprite((usedEntity, usedSprite), particle);
             _sprite.SetDrawDepth(particle, (int) Shared.DrawDepth.DrawDepth.Effects);
+        }
+        else if (TryComp<HideInteractionParticleSpriteComponent>(used, out var hidden) && hidden.Sprite is { } hiddenSprite) // Goob
+        {
+            _sprite.LayerSetSprite(particle, 0, hiddenSprite);
         }
         else if (type == StellarInteractionParticleType.Use && GetHandSprite(performer) is { } handSprite)
         {

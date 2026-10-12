@@ -9,6 +9,10 @@
       backSpriteLayers:
       - sprite: EstacaoPirata/Objects/Misc/cards.rsi
         state: back_syndicate
+    - type: HideInteractionParticleSprite # Goob
+      sprite:
+        sprite: EstacaoPirata/Objects/Misc/cards.rsi
+        state: back_syndicate
 
 - type: entity
   parent: CardBoxBase
@@ -42,6 +46,10 @@
     sprite: EstacaoPirata/Objects/Misc/cards.rsi
     state: deck_syndicate_full
     drawdepth: SmallObjects
+  - type: HideInteractionParticleSprite # Goob
+    sprite:
+      sprite: EstacaoPirata/Objects/Misc/cards.rsi
+      state: deck_syndicate_full
   - type: CardStack
     content:
     # Clubs

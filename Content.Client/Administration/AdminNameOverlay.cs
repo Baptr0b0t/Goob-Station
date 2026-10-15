@@ -11,6 +11,7 @@ using Content.Shared.CCVar;
 using Content.Shared.Ghost;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
@@ -26,6 +27,7 @@ internal sealed class AdminNameOverlay : Overlay
     private readonly IEntityManager _entityManager;
     private readonly IEyeManager _eyeManager;
     private readonly EntityLookupSystem _entityLookup;
+    private readonly TransformSystem _transform;
     private readonly IUserInterfaceManager _userInterfaceManager;
     private readonly SharedRoleSystem _roles;
     private readonly IPrototypeManager _prototypeManager;
@@ -67,6 +69,7 @@ internal sealed class AdminNameOverlay : Overlay
         _entityManager = entityManager;
         _eyeManager = eyeManager;
         _entityLookup = entityLookup;
+        _transform = entityManager.System<TransformSystem>();
         _userInterfaceManager = userInterfaceManager;
         _roles = roles;
         _prototypeManager = prototypeManager;
@@ -128,7 +131,9 @@ internal sealed class AdminNameOverlay : Overlay
                 || _entityManager.GetComponent<TransformComponent>(entity.Value).MapID != args.MapId)
                 continue;
 
-            var aabb = _entityLookup.GetWorldAABB(entity.Value);
+            var xform = _entityManager.GetComponent<TransformComponent>(entity.Value);
+            var aabb = _entityLookup.GetWorldAABB(entity.Value, xform);
+            aabb = aabb.Translated(_transform.GetRenderWorldPosition((entity.Value, xform)) - _transform.GetWorldPosition(xform));
             // if not on screen, skip
             if (!aabb.Intersects(in viewport))
                 continue;

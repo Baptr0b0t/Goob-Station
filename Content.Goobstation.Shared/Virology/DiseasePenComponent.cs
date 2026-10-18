@@ -10,6 +10,12 @@ public sealed partial class DiseasePenComponent : Component
     [ViewVariables]
     public int? Genotype;
 
+    /// <summary>
+    /// Distance from the genotype does the vaccine protect against
+    /// </summary>
+    [DataField]
+    public int Tolerance;
+
     [ViewVariables]
     public EntityUid? DiseaseUid;
 

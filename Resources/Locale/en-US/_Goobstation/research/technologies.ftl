@@ -46,3 +46,5 @@ research-technology-radio-music-communication = Radio Music Communications
 research-technology-cloning = Biological Reconstruction
 research-technology-service-energy-chem = Organic Electrosynthesis
 research-technology-security-cyborg = Security Cyborg Technology
+research-technology-clinical-virology = Clinical Virology
+research-technology-broad-spectrum-immunology = Broad Spectrum Immunology

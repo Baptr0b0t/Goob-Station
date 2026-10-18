@@ -8,6 +8,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using System.Text;
 using Content.Goobstation.Shared.Disease.Components;
+using Content.Goobstation.Shared.Disease.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio;
@@ -24,6 +25,7 @@ public sealed partial class VirologyMachinesSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private PowerReceiverSystem _power = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedDiseaseSystem _disease = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
@@ -132,7 +134,10 @@ public sealed partial class VirologyMachinesSystem : EntitySystem
         if (swab.Comp.DiseaseUid != null)
         {
             vaccineComponent.Genotype = disease.Genotype;
-            vaccineComponent.DiseaseUid = swab.Comp.DiseaseUid.Value;
+            vaccineComponent.Tolerance = ent.Comp.VaccineTolerance;
+            // Vaccines only need the genotype. Live injectors own a separate sample.
+            if (!vaccineComponent.Vaccine)
+                vaccineComponent.DiseaseUid = _disease.TryClone(swab.Comp.DiseaseUid.Value);
         }
 
         _itemSlots.TryEject(ent, ent.Comp.SwabSlot, null, out _);
@@ -152,6 +157,7 @@ public sealed partial class VirologyMachinesSystem : EntitySystem
         report.AppendLine(Loc.GetString("disease-analyzer-report-immunity-gain", ("rate", disease.ImmunityGainRate)));
         report.AppendLine(Loc.GetString("disease-analyzer-report-mutation-rate", ("rate", disease.MutationRate)));
         report.AppendLine(Loc.GetString("disease-analyzer-report-complexity", ("complexity", disease.Complexity)));
+        report.AppendLine(Loc.GetString("disease-analyzer-report-environmental-resistance", ("resistance", disease.EnvironmentalResistance)));
 
         report.AppendLine(Loc.GetString("disease-analyzer-report-effects-header"));
         foreach (var effectUid in disease.Effects.ContainedEntities)

@@ -9,6 +9,7 @@
 - type: diseaseType
   id: OwnCells
   name: disease-type-owncells
+  canContaminate: false
 
 - type: diseaseType
   id: Prion

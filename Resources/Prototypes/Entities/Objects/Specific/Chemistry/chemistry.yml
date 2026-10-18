@@ -483,6 +483,15 @@
   - type: Icon
     sprite: Objects/Specific/Chemistry/syringe.rsi
     state: "syringe_base0"
+  # Goobstation - a needle that drew from someone sick carries their disease
+  - type: InertDiseaseCarrier
+    decayRate: 0.004
+    pickupParams:
+      Blood: 0.9
+    spreadParams:
+    - spreadType: Blood
+      chance: 1
+      power: 2
   - type: Item
     size: Tiny
     sprite: Objects/Specific/Chemistry/syringe.rsi

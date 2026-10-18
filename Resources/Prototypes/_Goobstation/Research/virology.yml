@@ -1,0 +1,31 @@
+- type: technology
+  id: ClinicalVirology
+  name: research-technology-clinical-virology
+  icon:
+    sprite: Structures/Machines/diagnoser.rsi
+    state: icon
+  discipline: CivilianServices
+  tier: 2
+  cost: 7500
+  recipeUnlocks:
+  - DiagnoserMachineCircuitboard
+  - VaccinatorMachineCircuitboard
+  - DiseasePetriDish
+  position: 4,4
+  technologyPrerequisites:
+  - BiochemicalStasis
+
+- type: technology
+  id: BroadSpectrumImmunology
+  name: research-technology-broad-spectrum-immunology
+  icon:
+    sprite: Objects/Specific/Medical/medipen.rsi
+    state: salpen
+  discipline: CivilianServices
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - VaccinatorAdvancedMachineCircuitboard
+  position: 4,3
+  technologyPrerequisites:
+  - ClinicalVirology

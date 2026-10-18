@@ -32,6 +32,13 @@ public sealed partial class DiseaseCarrierComponent : Component
     public bool EffectImmune = false;
 
     /// <summary>
+    /// Drift needed before a disease counts as a new infection rather than one already here
+    /// Stops a slightly mutated disease from stacking on top of itself
+    /// </summary>
+    [DataField]
+    public int ReinfectionTolerance = 3;
+
+    /// <summary>
     /// Icon to show on HUDs if total disease severity is low.
     /// </summary>
     [DataField, AutoNetworkedField]

@@ -20,6 +20,12 @@ public sealed partial class VirologyMachineComponent : Component
     [DataField]
     public EntProtoId VaccinePrototype = "Vaccine";
 
+    /// <summary>
+    /// Distance from the genotype does the vaccine protect against
+    /// </summary>
+    [DataField]
+    public int VaccineTolerance;
+
     [DataField]
     public SoundSpecifier AnalyzedSound = new SoundPathSpecifier("/Audio/Machines/diagnoser_printing.ogg");
 

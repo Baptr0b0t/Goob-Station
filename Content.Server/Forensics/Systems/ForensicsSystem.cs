@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Shared.Disease;
 using Content.Server._EinsteinEngines.Forensics.Components;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
@@ -254,10 +255,12 @@ namespace Content.Server.Forensics
                 return false;
             }
 
+            var cleanAttempt = new DiseaseContaminationCleanAttemptEvent(); // Goobstation - surface contamination
+            RaiseLocalEvent(target, ref cleanAttempt);
             var totalPrintsAndFibers = forensicsComp.Fingerprints.Count + forensicsComp.Fibers.Count;
             var hasRemovableDNA = forensicsComp.DNAs.Count > 0 && forensicsComp.CanDnaBeCleaned;
 
-            if (hasRemovableDNA || totalPrintsAndFibers > 0)
+            if (hasRemovableDNA || totalPrintsAndFibers > 0 || cleanAttempt.CanClean)
             {
                 var cleanDelay = cleanForensicsEntity.Comp.CleanDelay;
                 if (HasComp<ScentComponent>(target)) // EinsteinEngines
@@ -293,6 +296,9 @@ namespace Content.Server.Forensics
 
             if (!TryComp<ForensicsComponent>(args.Target, out var targetComp))
                 return;
+
+            var cleaned = new DiseaseContaminationCleanedEvent(); // Goobstation - surface contamination
+            RaiseLocalEvent(args.Target.Value, ref cleaned);
 
             targetComp.Fibers = new();
             targetComp.Fingerprints = new();

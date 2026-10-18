@@ -105,6 +105,14 @@ public partial class SharedDiseaseSystem
     public const float MinMutationRate = 0.0001f;
 
     /// <summary>
+    /// Bounds on <see cref="DiseaseComponent.EnvironmentalResistance"/> drift. Mutation is a
+    /// multiplicative random walk, so unbounded it would let a disease survive on surfaces forever.
+    /// </summary>
+    public const float MinEnvironmentalResistance = 0.5f;
+
+    public const float MaxEnvironmentalResistance = 4f;
+
+    /// <summary>
     /// Mutate the provided disease
     /// Can take an override of mutation rate
     /// </summary>
@@ -123,6 +131,10 @@ public partial class SharedDiseaseSystem
         ent.Comp.MutationRate *= MathF.Exp(_random.NextFloat(-1f, 1f) * ent.Comp.MutationMutationCoefficient * rate);
         ent.Comp.ImmunityGainRate *= MathF.Exp(_random.NextFloat(-1f, 1f) * ent.Comp.ImmunityGainMutationCoefficient * rate);
         ent.Comp.InfectionRate *= MathF.Exp(_random.NextFloat(-1f, 1f) * ent.Comp.InfectionRateMutationCoefficient * rate);
+        ent.Comp.EnvironmentalResistance = Math.Clamp(
+            ent.Comp.EnvironmentalResistance * MathF.Exp(_random.NextFloat(-1f, 1f) * ent.Comp.EnvironmentalResistanceMutationCoefficient * rate),
+            MinEnvironmentalResistance,
+            MaxEnvironmentalResistance);
         // note that this is actually the "target" complexity, actual complexity is brought to this value at the end of this method
         ent.Comp.Complexity *= MathF.Exp(_random.NextFloat(-1f, 1f) * ent.Comp.ComplexityMutationCoefficient * rate);
 
@@ -140,7 +152,7 @@ public partial class SharedDiseaseSystem
 
         // genotype mutation
         if (ExpProb(ent.Comp.GenotypeMutationCoefficient * rate))
-            ent.Comp.Genotype = _random.Next();
+            ent.Comp.Genotype = DiseaseGenotype.Drift(ent.Comp.Genotype, ent.Comp.GenotypeDriftBits, _random);
 
         // effect severity mutation
         foreach (var effectUid in ent.Comp.Effects.ContainedEntities)

@@ -115,6 +115,13 @@ public sealed partial class DiseaseComponent : Component
     public int Genotype;
 
     /// <summary>
+    /// How many bits of <see cref="Genotype"/> flip when it mutates
+    /// Low values keep a mutated disease close to its lineage
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public int GenotypeDriftBits = 2;
+
+    /// <summary>
     /// Whether you can gain immunity to this genotype, set to false for cancer and similar
     /// Prevents the entity from obtaining immunity to this genotype, does nothing if said immunity already exists
     /// </summary>
@@ -132,6 +139,18 @@ public sealed partial class DiseaseComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float DeadInfectionRate = 0.00444444444444f;
+
+    /// <summary>
+    /// How well this disease survives on inert surfaces <see cref="InertDiseaseCarrierComponent"/>
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float EnvironmentalResistance = 1f;
+
+    /// <summary>
+    /// Affects mutation of environmental resistance
+    /// </summary>
+    [DataField]
+    public float EnvironmentalResistanceMutationCoefficient = 0.5f;
 
     /// <summary>
     /// Determiens the effects this disease mutates

@@ -25,7 +25,7 @@
   - type: Disease
     diseaseType: Viral
     infectionRate: 0.01 # 100 seconds
-    genotype: 1234
+    genotype: 507141241
     effects:
       DiseaseBehaviorPoison: 0.4
       DiseaseBehaviorVomit: 0.6
@@ -45,7 +45,7 @@
     infectionRate: 0.005 # slow
     immunityGainRate: 0.5 # immunity against it also slow
     canGainImmunity: false
-    genotype: 1111
+    genotype: 1657902502
     effects:
       DiseaseBehaviorCancer: 0.5
       DiseaseBehaviorFightImmunity: 1 # won't let you cure it
@@ -58,7 +58,7 @@
   components:
   - type: Disease
     diseaseType: Bacterial
-    genotype: 56441
+    genotype: 900111379
     effects:
       DiseaseBehaviorGravitosisA: 1
 
@@ -70,6 +70,6 @@
   components:
   - type: Disease
     diseaseType: Bacterial
-    genotype: 666323
+    genotype: 1237543605
     effects:
       DiseaseBehaviorGunemia: 1

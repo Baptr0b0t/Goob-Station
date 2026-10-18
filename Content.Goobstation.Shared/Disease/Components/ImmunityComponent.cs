@@ -31,7 +31,7 @@ public sealed partial class ImmunityComponent : Component
     /// Genotypes we have gained immunity against from getting sick by them or having taken a vaccine for
     /// </summary>
     [DataField]
-    public HashSet<int> ImmuneTo = new();
+    public List<DiseaseImmunitySpecifier> ImmuneTo = new();
 
     /// <summary>
     /// Whether to still work while dead

@@ -18,6 +18,6 @@ namespace Content.Goobstation.Shared.Disease
         public string LocalizedName => Loc.GetString("disease-spread-" + Name.ToLower());
 
         [DataField]
-        public bool BlockedByInternals; // TODO: not implemented in the system
-         }
+        public bool BlockedByInternals;
+    }
 }

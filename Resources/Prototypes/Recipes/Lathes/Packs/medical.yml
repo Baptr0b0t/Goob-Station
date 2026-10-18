@@ -120,6 +120,7 @@
   - MedkitCombat #goob - Move combat kit to research
   - VialBluespace # goob edit - bluespace vials
   - CryostasisCigarette # goob - cryo cig
+  - DiseasePetriDish # Goobstation virology
 
 - type: latheRecipePack
   id: MedicalBoards
@@ -129,3 +130,8 @@
   - BiomassReclaimerMachineCircuitboard
   - StasisOperatingTableCircuitboard # Corvax-Goob-StasisOperatingTable
   - EnergyChemDispenserMachineCircuitboard #Goob
+  # Goobstation virology start
+  - DiagnoserMachineCircuitboard
+  - VaccinatorMachineCircuitboard
+  - VaccinatorAdvancedMachineCircuitboard
+  # Goobstation virology end

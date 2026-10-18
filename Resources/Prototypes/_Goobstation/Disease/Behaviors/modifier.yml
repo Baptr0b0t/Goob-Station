@@ -9,7 +9,7 @@
   - type: DiseaseFightImmunityEffect
 
 - type: entity
-  id: DiseaseBehaviorSluggish
+  id: DiseaseBehaviorSluggish #Todo : Add on weights
   parent: DiseaseBehaviorBase
   name: Feeling sluggish
   description: Makes you feel sluggish.

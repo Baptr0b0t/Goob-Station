@@ -157,6 +157,14 @@
   - type: Fiber
     fiberMaterial: fibers-latex
   - type: FingerprintMask
+  # Goobstation
+  - type: DiseaseProtection
+    incoming:
+      chanceMultipliers:
+        Contact: 0.25
+    outgoing:
+      chanceMultipliers:
+        Contact: 0.25
 
 - type: entity
   parent: ClothingHandsButcherable
@@ -171,6 +179,14 @@
   - type: Fiber
     fiberMaterial: fibers-nitrile
   - type: FingerprintMask
+  # Goobstation
+  - type: DiseaseProtection
+    incoming:
+      chanceMultipliers:
+        Contact: 0.1
+    outgoing:
+      chanceMultipliers:
+        Contact: 0.1
 ####
 - type: entity
   parent: ClothingHandsButcherable

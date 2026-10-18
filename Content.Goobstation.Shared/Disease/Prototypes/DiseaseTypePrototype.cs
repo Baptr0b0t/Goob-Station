@@ -11,6 +11,9 @@ namespace Content.Goobstation.Shared.Disease
         [IdDataField]
         public string ID { get; private set; } = default!;
 
+        [DataField]
+        public bool CanContaminate = true;
+
         [DataField(required: true)]
         private LocId Name { get; set; }
 

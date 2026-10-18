@@ -18,7 +18,7 @@
     spreadParams:
       power: 0.5
       chance: 0.5
-      spreadType: Aerial
+      spreadType: Aerial #Todo : Puddle
   - type: DiseasePeriodicCondition
     delayMin: 20
     delayMax: 60

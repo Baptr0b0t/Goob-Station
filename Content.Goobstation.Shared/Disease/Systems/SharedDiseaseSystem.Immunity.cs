@@ -41,7 +41,13 @@ public partial class SharedDiseaseSystem
         if (!Resolve(ent, ref ent.Comp, false))
             return false;
 
-        return ent.Comp.ImmuneTo.Contains(genotype);
+        foreach (var immunity in ent.Comp.ImmuneTo)
+        {
+            if (immunity.Covers(genotype))
+                return true;
+        }
+
+        return false;
     }
 
     /// <summary>
@@ -63,21 +69,31 @@ public partial class SharedDiseaseSystem
         return !HasDisease((ent, ent.Comp1), genotype) && !HasImmunity((ent, ent.Comp2), genotype);
     }
 
-    public bool TryAddImmunity(Entity<ImmunityComponent?> ent, int genotype)
+    /// <summary>
+    /// Grants immunity against a genotype and those within the given Hamming distance.
+    /// </summary>
+    public bool TryAddImmunity(Entity<ImmunityComponent?> ent, int genotype, int tolerance = 0)
     {
         if (!Resolve(ent, ref ent.Comp, false))
             return false;
 
-        ent.Comp.ImmuneTo.Add(genotype);
+        foreach (var immunity in ent.Comp.ImmuneTo)
+        {
+            // Covering the new center alone does not cover its entire tolerance radius.
+            if (DiseaseGenotype.Distance(immunity.Genotype, genotype) + tolerance <= immunity.Tolerance)
+                return true;
+        }
+
+        ent.Comp.ImmuneTo.Add(new DiseaseImmunitySpecifier(genotype, tolerance));
         return true;
     }
 
-    public bool TryAddImmunity(Entity<ImmunityComponent?> ent, Entity<DiseaseComponent?> disease)
+    public bool TryAddImmunity(Entity<ImmunityComponent?> ent, Entity<DiseaseComponent?> disease, int tolerance = 0)
     {
         if (!Resolve(disease, ref disease.Comp))
             return false;
 
-        return TryAddImmunity(ent, disease.Comp.Genotype);
+        return TryAddImmunity(ent, disease.Comp.Genotype, tolerance);
     }
 
     public bool CanImmunityAffect(Entity<ImmunityComponent?> ent, DiseaseComponent disease)

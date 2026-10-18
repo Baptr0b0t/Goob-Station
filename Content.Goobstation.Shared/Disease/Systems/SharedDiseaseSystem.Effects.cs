@@ -100,7 +100,7 @@ public partial class SharedDiseaseSystem
         );
         RaiseLocalEvent(args.Ent, ref ev);
 
-        if (ev.Power < 0 || ev.Chance < 0)
+        if (ev.Power <= 0 || ev.Chance <= 0)
             return;
 
         var xform = Transform(args.Ent);
@@ -108,9 +108,12 @@ public partial class SharedDiseaseSystem
 
         var targets = _melee.ArcRayCast(selfPos, selfRot, ent.Comp.Arc, ent.Comp.Range, xform.MapID, args.Ent);
 
+        var chance = ev.Chance * GetScale(args, ent.Comp);
         foreach (var target in targets)
         {
-            DoInfectionAttempt(target, args.Disease, ev.Power, ev.Chance * GetScale(args, ent.Comp), ent.Comp.SpreadParams.Type);
+            DoInfectionAttempt(target, args.Disease, ev.Power, chance, ev.Type);
+            var contaminate = new DiseaseContaminateAttemptEvent(args.Disease, ev.Type, chance);
+            RaiseLocalEvent(target, ref contaminate);
         }
     }
 

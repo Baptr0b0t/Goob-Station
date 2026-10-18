@@ -10,6 +10,19 @@
     flags:
     - Anchorable
   - type: Rotatable
+  # Goobstation - door controls pass diseases between whoever touches them
+  - type: InertDiseaseCarrier
+    exchangeOnCollide: true
+    pickupParams:
+      Contact: 0.25
+      Aerial: 0.4
+    spreadParams:
+    - spreadType: Contact
+      chance: 0.15
+      power: 1
+    - spreadType: Aerial
+      chance: 1
+      power: 1
   - type: StationAiWhitelist
   - type: MeleeSound
     soundGroups:

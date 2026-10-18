@@ -1,0 +1,11 @@
+- type: entity
+  id: VaccinatorAdvanced
+  parent: Vaccinator
+  name: broad spectrum vaccinator
+  description: Prints vaccines that keep working after a disease drifts away from its lineage.
+  components:
+  - type: Machine
+    board: VaccinatorAdvancedMachineCircuitboard
+  - type: VirologyMachine
+    analysisDuration: 30
+    vaccineTolerance: 4

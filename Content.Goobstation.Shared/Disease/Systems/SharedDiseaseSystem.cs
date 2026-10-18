@@ -222,7 +222,7 @@ public abstract partial class SharedDiseaseSystem : EntitySystem
     }
 
     /// <summary>
-    /// Finds a disease of specified genotype, if any
+    /// Finds a disease close enough to this genotype, if any
     /// </summary>
     private bool FindDisease(Entity<DiseaseCarrierComponent?> ent, int genotype, [NotNullWhen(true)] out EntityUid? disease)
     {
@@ -235,7 +235,7 @@ public abstract partial class SharedDiseaseSystem : EntitySystem
             if (!TryComp<DiseaseComponent>(diseaseUid, out var diseaseComp))
                 continue;
 
-            if (genotype != diseaseComp.Genotype)
+            if (DiseaseGenotype.Distance(genotype, diseaseComp.Genotype) > ent.Comp.ReinfectionTolerance)
                 continue;
             disease = diseaseUid;
             return true;
@@ -244,7 +244,7 @@ public abstract partial class SharedDiseaseSystem : EntitySystem
     }
 
     /// <summary>
-    /// Checks if the entity has a disease of specified genotype
+    /// Checks if the entity has a disease of specified genotype, or one close enough to count as the same illness
     /// </summary>
     private bool HasDisease(Entity<DiseaseCarrierComponent?> ent, int genotype)
     {

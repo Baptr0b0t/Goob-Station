@@ -96,7 +96,7 @@
       spreadType: Aerial
 
 - type: entity
-  id: DiseaseBehaviorSkinLesion
+  id: DiseaseBehaviorSkinLesion #Todo : Add on weights
   parent: DiseaseBehaviorBase
   name: Skin lesion
   description: Deals slash damage. Infective.
@@ -113,7 +113,7 @@
     spreadParams:
       power: 1
       chance: 0.6
-      spreadType: Aerial
+      spreadType: Aerial #Todo : Make it contact and handle player2player infection
   - type: DiseaseReagentEffect
     effects:
     - !type:HealthChange
@@ -143,7 +143,7 @@
     spreadParams:
       power: 1
       chance: 0.8
-      spreadType: Aerial
+      spreadType: Aerial #Todo : Make it contact and handle player2player infection
   - type: DiseaseReagentEffect
     effects:
     - !type:HealthChange

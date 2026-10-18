@@ -59,6 +59,24 @@ public record struct DiseaseCheckConditionsEvent(DiseaseEffectComponent Comp, En
 public record struct GetImmunityEvent(Entity<DiseaseComponent> Disease, float ImmunityGainRate = 0f, float ImmunityStrength = 0f);
 
 /// <summary>
+/// This event is raised on nearby inert object when a disease spreads into the air.
+/// </summary>
+[ByRefEvent]
+public record struct DiseaseContaminateAttemptEvent(Entity<DiseaseComponent> Disease, ProtoId<DiseaseSpreadPrototype> Route, float Chance);
+
+/// <summary>
+/// Raised on a cleaning target to check whether it carries disease contamination that can be removed.
+/// </summary>
+[ByRefEvent]
+public record struct DiseaseContaminationCleanAttemptEvent(bool CanClean = false);
+
+/// <summary>
+/// Raised on a successfully cleaned target to remove its disease contamination.
+/// </summary>
+[ByRefEvent]
+public record struct DiseaseContaminationCleanedEvent;
+
+/// <summary>
 /// Base event for disease spread attempts.
 /// </summary>
 public abstract record DiseaseSpreadAttemptEvent(float Power, float Chance, ProtoId<DiseaseSpreadPrototype> Type) : IInventoryRelayEvent

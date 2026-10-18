@@ -1,0 +1,25 @@
+- type: latheRecipe
+  parent: [ BaseCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
+  id: DiagnoserMachineCircuitboard
+  icon: { sprite: Structures/Machines/diagnoser.rsi, state: icon }
+  result: DiagnoserMachineCircuitboard
+
+- type: latheRecipe
+  parent: [ BaseCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
+  id: VaccinatorMachineCircuitboard
+  icon: { sprite: Structures/Machines/vaccinator.rsi, state: icon }
+  result: VaccinatorMachineCircuitboard
+
+- type: latheRecipe
+  parent: [ BaseGoldCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
+  id: VaccinatorAdvancedMachineCircuitboard
+  icon: { sprite: Structures/Machines/vaccinator.rsi, state: icon }
+  result: VaccinatorAdvancedMachineCircuitboard
+
+- type: latheRecipe
+  id: DiseasePetriDish
+  result: DiseasePetriDish
+  completetime: 2
+  materials:
+    Glass: 100
+    Plastic: 50

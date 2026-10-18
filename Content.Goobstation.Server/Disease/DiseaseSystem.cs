@@ -25,7 +25,6 @@ public sealed partial class DiseaseSystem : SharedDiseaseSystem
 
         SubscribeLocalEvent<DiseaseComponent, DiseaseCloneEvent>(OnClonedInto);
         SubscribeLocalEvent<GrantDiseaseComponent, MapInitEvent>(OnGrantDiseaseInit);
-        // SubscribeLocalEvent<InternalsComponent, DiseaseIncomingSpreadAttemptEvent>(OnInternalsIncomingSpread); // TODO: fix
         SubscribeLocalEvent<DiseaseCarrierComponent, RejuvenateEvent>(OnRejuvenate);
         SubscribeLocalEvent<DiseaseCarrierComponent, DiseaseProgressChange>(OnDiseaseProgressChange);
         SubscribeLocalEvent<DiseaseCarrierComponent, MutateDiseases>(OnDiseaseMutate);
@@ -55,6 +54,9 @@ public sealed partial class DiseaseSystem : SharedDiseaseSystem
         ent.Comp.GenotypeMutationCoefficient = args.Source.Comp.GenotypeMutationCoefficient;
         ent.Comp.Complexity = args.Source.Comp.Complexity;
         ent.Comp.Genotype = args.Source.Comp.Genotype;
+        ent.Comp.GenotypeDriftBits = args.Source.Comp.GenotypeDriftBits;
+        ent.Comp.EnvironmentalResistance = args.Source.Comp.EnvironmentalResistance;
+        ent.Comp.EnvironmentalResistanceMutationCoefficient = args.Source.Comp.EnvironmentalResistanceMutationCoefficient;
         ent.Comp.CanGainImmunity = args.Source.Comp.CanGainImmunity;
         ent.Comp.AffectsDead = args.Source.Comp.AffectsDead;
         ent.Comp.DeadInfectionRate = args.Source.Comp.DeadInfectionRate;
@@ -80,16 +82,6 @@ public sealed partial class DiseaseSystem : SharedDiseaseSystem
         if (!TryInfect(ent.Owner, disease.Value))
             QueueDel(disease);
     }
-
-    /* TODO: fix
-    private void OnInternalsIncomingSpread(EntityUid uid, InternalsComponent internals, DiseaseIncomingSpreadAttemptEvent args)
-    {
-        if (_proto.TryIndex<DiseaseSpreadPrototype>(args.Type, out var spreadProto) && _internals.AreInternalsWorking(uid, internals))
-        {
-            args.ApplyModifier(internals.IncomingInfectionModifier);
-        }
-    }
-    */
 
     private void OnRejuvenate(Entity<DiseaseCarrierComponent> ent, ref RejuvenateEvent args)
     {

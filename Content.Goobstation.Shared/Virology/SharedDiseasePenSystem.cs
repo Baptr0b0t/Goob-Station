@@ -17,27 +17,38 @@ public sealed partial class SharedDiseasePenSystem : EntitySystem
     {
         SubscribeLocalEvent<DiseasePenComponent, AfterInteractEvent>(OnAfterInteract);
         SubscribeLocalEvent<DiseasePenComponent, DiseasePenInjectEvent>(OnInjectEvent);
+        SubscribeLocalEvent<DiseasePenComponent, ComponentShutdown>(OnShutdown);
         base.Initialize();
     }
 
     private void OnInjectEvent(Entity<DiseasePenComponent> ent, ref DiseasePenInjectEvent args)
     {
-        if (args.Target == null
+        if (args.Handled || args.Cancelled || ent.Comp.Used || args.Target == null
             || ent.Comp.DiseaseUid == null
             || !_disease.TryInfect(args.Target.Value, ent.Comp.DiseaseUid.Value))
             return;
 
+        ent.Comp.DiseaseUid = null;
         ent.Comp.Used = true;
+        args.Handled = true;
         _audio.PlayPredicted(ent.Comp.InjectSound, args.User, args.User);
         _appearance.SetData(ent, DiseasePenVisuals.Used, true);
     }
 
     private void OnAfterInteract(Entity<DiseasePenComponent> ent, ref AfterInteractEvent args)
     {
+        if (args.Handled || !args.CanReach)
+            return;
+
         if (ent.Comp.Vaccine)
             TryVaccinate(ent, args);
         else
             TryInject(ent, args);
+    }
+
+    private void OnShutdown(Entity<DiseasePenComponent> ent, ref ComponentShutdown args)
+    {
+        QueueDel(ent.Comp.DiseaseUid);
     }
 
     private void TryInject(Entity<DiseasePenComponent> ent, AfterInteractEvent args)
@@ -63,7 +74,7 @@ public sealed partial class SharedDiseasePenSystem : EntitySystem
             || args.Target == null)
             return;
 
-        immunity.ImmuneTo.Add(ent.Comp.Genotype.Value);
+        _disease.TryAddImmunity((args.Target.Value, immunity), ent.Comp.Genotype.Value, ent.Comp.Tolerance);
         ent.Comp.Used = true;
 
         _audio.PlayPredicted(ent.Comp.InjectSound, args.User, args.User);

@@ -7,3 +7,4 @@ disease-type-debug = Unknown
 disease-spread-aerial = Aerial
 disease-spread-blood = Blood
 disease-spread-debug = Debug
+disease-spread-contact = Contact

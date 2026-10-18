@@ -1,0 +1,12 @@
+- type: entity
+  parent: BaseItem
+  id: DiseasePetriDish
+  name: petri dish
+  description: A dish of growth medium. Seed it with a used swab to keep a disease alive, then swab it again whenever you need another sample.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Specific/Chemistry/beaker.rsi # placeholder sprite, swap me
+    state: lid_beaker
+  - type: DiseasePetriDish

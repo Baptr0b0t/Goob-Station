@@ -13,5 +13,6 @@ disease-analyzer-report-mutation-rate = Mutation Rate: {NATURALFIXED($rate, 3)}
 disease-analyzer-report-complexity = Complexity: {NATURALFIXED($complexity, 1)}
 disease-analyzer-report-effects-header = Detected Effects:
 disease-analyzer-report-effect-line = - {$effect} (Severity {NATURALFIXED($severity, 2)}): {$description}
+disease-analyzer-report-environmental-resistance = Environmental Resistance: {NATURALFIXED($resistance, 2)}
 
 disease-analyzer-unknown-effect = Unknown
